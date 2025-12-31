@@ -7,14 +7,14 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "lotus"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -46,7 +46,6 @@
   services.xserver.xkb = {
     layout = "us";
     variant = "";
-    options = "caps:swapescape"; # swap capslock and esc
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -60,69 +59,11 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Enable hyprland and Wayland
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
-  };
-
-  # Enable cosmic greeter
-  services.displayManager.cosmic-greeter.enable = true;
-
-  # Set nvim as default editor
-  environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
-
-  # Setup ZSH and OMZ
-  programs.zsh = {
-    enable = true;
-
-    ohMyZsh = {
-      enable = true;
-      theme = "crcandy";
-      plugins = [
-        "sudo"
-	"history"
-	"docker"
-	"rsync"
-        ];
-      };
-    };
-
-  # Enable fonts
-  fonts = {
-    enableDefaultPackages = true;
-
-    packages = with pkgs; [
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.fira-code
-      nerd-fonts.symbols-only
-    ];
-  };
-
-  # Configure tailscale
-  services.tailscale = {
-    enable = true;
-  };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    waybar
-    nnn
-    wofi
-    librewolf
-    qutebrowser
-    fastfetch
-    kitty
-    cmatrix
-    cbonsai
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
