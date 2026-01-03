@@ -1,0 +1,55 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "height": 24,
+    "spacing": 5,
+    "font": "JetBrainsMono Nerd Font 10",
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio", "cpu", "memory", "network", "battery" ],
+
+    "network": {
+        "format": "{icon} {essid}",   // show the icon + SSID
+        "format-disconnected": "\udb82\udcbf Disconnected", // icon for disconnected
+        "format-icons": {
+            "default": ["\udb82\udcbc", "\udb82\udcbd", "\udb82\udcbe"] // low → high signal
+        }
+    },
+
+    "battery": {
+        "bat": "BAT0",
+	"states": {
+	    "good": 95,
+	    "warning": 30,
+	    "critical": 5
+	},
+	"format": "BAT: {capacity}%",
+	"format-charging": "BAT: {capacity}% \udb85\udc0b",
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+	"tootltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+    "pulseaudio": {
+        "format": "VOL: {volume}% {icon}",
+        "format-muted": "VOL: {volume}% ",  // include the icon for muted
+        "format-icons": {
+            "default": ["\uf026", "\uf027", "\uf028"]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+
+    "tray": {
+        "icon-size": 20,
+	"spacing": 10
+    },
+    "cpu": {
+        "interval": 10,
+	"format": "CPU: {usage}%"
+    },
+    "memory": {
+        "interval": 30,
+	"format": "MEM: {percentage}%"
+    }
+}

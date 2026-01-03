@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      #Import nvf flake
+      #inputs.nvf.nixosModules.default
     ];
 
   # Bootloader.
@@ -60,6 +62,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Enable steam
+  programs.steam.enable = true;
   # Enable hyprland and Wayland
   programs.hyprland = {
     enable = true;
@@ -108,10 +112,25 @@
     enable = true;
   };
 
+  # Configure nvf
+  #IDK HOW THIS WORKS
+#  programs.nvf = {
+#    enable = true;
+#
+#    settings = {
+#      preset = "maximal";
+#      theme = "catppuccin";
+#      vim.viAlias = false;
+#      vim.vimAlias = true;
+#      vim.lsp = {
+#        enable = true;
+#      };
+#    };
+#  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
     waybar
@@ -123,6 +142,12 @@
     kitty
     cmatrix
     cbonsai
+    gcc
+    gnumake
+    python3
+    curl
+    neovim
+    pastel    
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
