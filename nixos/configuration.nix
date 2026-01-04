@@ -62,6 +62,30 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Handle lid close behaviour and powerbutton
+  services.logind.extraConfig = ''
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "lock";
+    HandleLidSwitchDocked = "ignore";
+    HandlePowerKey = ignore
+  '';
+
+  # Enable power management
+  powerManagement.enable = true;
+
+  #Enale tlp for power management
+  services.tlp = {
+    enable = true;
+    settings = {
+      # Optional helps save long term battery health
+      START_CHARGE_THRESH_BAT0 = 40;
+      STOP_CHARGE_THRESH_BAT0 = 90;
+    };
+  };
+
+  # Enable thermal control
+  services.thermald.enable = true;
+
   # Enable steam
   programs.steam.enable = true;
   # Enable hyprland and Wayland
@@ -74,10 +98,12 @@
   # Enable cosmic greeter
   services.displayManager.cosmic-greeter.enable = true;
 
-  # Set nvim as default editor
+  # Set nvim as default editor and set cursor
   environment.variables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
+    XCURSOR_THEME = "Numix";
+    XCURSOR_SIZE = "28";
   };
 
   # Setup ZSH and OMZ
@@ -133,6 +159,7 @@
   environment.systemPackages = with pkgs; [
     wget
     git
+    rclone
     waybar
     nnn
     wofi
@@ -148,6 +175,15 @@
     curl
     neovim
     pastel    
+    hyprpaper
+    wireshark
+    imv
+    numix-cursor-theme
+    exiftool
+    dunst
+    evtest
+    tealdeer
+    btop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -1,0 +1,35 @@
+[global]
+# Font and basic layout
+font = Monospace 10
+frame_width = 0
+separator_height = 0
+padding = 12
+origin = top-right
+monitor = 0
+timeout = 5000
+sort = yes
+icon_position = left
+
+# Transparency / frame
+transparency = 10             # 0–10, higher is more transparent
+frame_color = "#00000000"     # fully transparent
+separator_color = "#00000000"
+
+# Rounded corners (newer Dunst supports corner_radius)
+corner_radius = 10
+
+[urgency_low]
+background = "#1F1A17AA"      # dark glassy amber with alpha
+foreground = "#FFEBC3"        # soft light amber text
+frame_color = "#00000000"
+
+[urgency_normal]
+background = "#2B1E1CAA"      # slightly brighter amber
+foreground = "#FFEBC3"
+frame_color = "#00000000"
+
+[urgency_critical]
+background = "#FF5555AA"      # red for critical
+foreground = "#FFFFFF"
+frame_color = "#FF5555AA"
+

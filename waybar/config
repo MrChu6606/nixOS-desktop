@@ -21,7 +21,7 @@
 	"states": {
 	    "good": 95,
 	    "warning": 30,
-	    "critical": 5
+	    "critical": 10
 	},
 	"format": "BAT: {capacity}%",
 	"format-charging": "BAT: {capacity}% \udb85\udc0b",

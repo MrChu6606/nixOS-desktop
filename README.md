@@ -9,6 +9,8 @@ It is organized to make it easy to track, version, and replicate my setup across
 
 - `nixos/` — NixOS system configuration files (`configuration.nix` and related modules)  
 - `hyprland/` — Hyprland Wayland compositor configuration (`hyprland.conf`)  
+- `waybar/` - little bar at the top
+- `kitty/` - terminal emulator
 - `...` — Additional dotfiles will be added as I create them  
 
 ---
@@ -18,5 +20,8 @@ It is organized to make it easy to track, version, and replicate my setup across
 ### 1. Clone the repository
 
 ```bash
-git clone git@github.com:YOUR_USERNAME/dotfiles.git ~/dotfiles
+git clone git@github.com:YOUR_USERNAME/nixOS-desktop.git ~/dotfiles
 
+### 2. symlink configuration.nix to /etc/nixos/configuration.nix
+
+### 3. symlink the rest of the dotfiles to their paths in .config
