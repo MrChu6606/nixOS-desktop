@@ -136,7 +136,7 @@
     enable = true;
     
     interactiveShellInit = ''
-      source ~/dotfiles/shell/aliases.
+      source /home/nic/dotfiles/shell/aliases.sh
     '';
 
     ohMyZsh = {
