@@ -1,2 +1,0 @@
-event=button/power
-action=/home/nic/dotfiles/scripts/power-menu.sh

@@ -62,6 +62,31 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  #Enable flakes and nix cli tool
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Enable bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+	# Shows battery charge of connected devices on supported
+        # Bluetooth adapters. Defaults to 'false'.
+        Experimental = true;
+      };
+      Policy = {
+        # Enable all controllers when they are found. This includes
+        # adapters present on start as well as adapters that are plugged
+        # in later on. Defaults to 'true'.
+        AutoEnable = true;
+      };
+    };
+  };
+  # Install bluetooth GUI and applett
+  services.blueman.enable = true;
+
+
   # Handle lid close behaviour and powerbutton
   services.logind.extraConfig = ''
     HandleLidSwitch = "suspend";
@@ -109,6 +134,10 @@
   # Setup ZSH and OMZ
   programs.zsh = {
     enable = true;
+    
+    interactiveShellInit = ''
+      source ~/dotfiles/shell/aliases.
+    '';
 
     ohMyZsh = {
       enable = true;
@@ -184,6 +213,7 @@
     evtest
     tealdeer
     btop
+    zathura
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
