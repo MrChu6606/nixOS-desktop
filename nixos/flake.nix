@@ -2,31 +2,27 @@
   description = "My NixOS system flake";
 
   inputs = {
-    # NixOS official package source, using the nixos-25.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixvim.url = "path:../nixvim";
     librepods.url = "path:../librepods";
   };
 
-  outputs = { self, nixpkgs, nixvim, librepods }:
-  let
+  outputs = { self, nixpkgs, nixvim, librepods }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
-  in
-    {
-      nixosConfigurations.lotus = pkgs.lib.nixosSystem {
-        inherit system;
+  in {
+    nixosConfigurations.lotus = pkgs.lib.nixosSystem {
+      inherit system;
 
-	modules = [
-	  ./configuration.nix
-	  nixvim.nixosModule
-	];
-      
-      # Optional: make GitHub project available as a package
+      modules = [
+        ./configuration.nix
+        nixvim.nixosModule
+      ];
+
       configuration = {
         environment.systemPackages = [
-	  librepods.packages.${system}.librepods
-	];
+          librepods.packages.${system}.librepods
+        ];
       };
     };
   };
