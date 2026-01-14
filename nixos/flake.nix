@@ -5,8 +5,7 @@
     # NixOS official package source, using the nixos-25.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixvim.url = "path:../nixvim/flake.nix";
-    inputs.librepods.url = "path:../librepods/flake.nix";
-    };
+    librepods.url = "path:../librepods/flake.nix";
   };
 
   outputs = { self, nixpkgs, nixvim, librepods }:
