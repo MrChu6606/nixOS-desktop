@@ -4,25 +4,15 @@
   inputs = {
     # NixOS official package source, using the nixos-25.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixvim.url = "https://github.com/MrChu6606/nixOS-desktop/tree/66360e317eee362d6ac7af7b756236e84f3dffe2/nixvim";
-    # Importing non-flake github repo
-    librepods = {
-      url = "https://github.com/kavishdevar/librepods.git";
-      # Optional: pin to a commit
-      rev = "a01e16792a73deb34c5bd0c4aa019c496642ee71";
+    nixvim.url = "path:../nixvim/flake.nix";
+    inputs.librepods.url = "path:../librepods/flake.nix";
     };
   };
 
-  outputs = { self, nixpkgs, nixvim, myProject }:
+  outputs = { self, nixpkgs, nixvim, librepods }:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
-
-    # Wrap a non-flake GitHub project as a package
-    librepodsPkg = import (builtins.fetchGit {
-      url = "https://github.com/kavishdevar/librepods.git";
-      rev = "a01e16792a73deb34c5bd0c4aa019c496642ee71";
-    }) { inherit pkgs; };
   in
     {
       nixosConfigurations.lotus = pkgs.lib.nixosSystem {
@@ -36,7 +26,7 @@
       # Optional: make GitHub project available as a package
       configuration = {
         environment.systemPackages = [
-	  librepodsPkg
+	  librepods.packages.${system}.librepods
 	];
       };
     };
