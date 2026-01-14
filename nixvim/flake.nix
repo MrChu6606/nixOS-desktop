@@ -9,9 +9,9 @@
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
-    nixvim = import (builtings.fetchGit {
+    nixvim = import (builtins.fetchGit {
       url = "https://github.com/nix-community/nixvim";
-      ref = "nixos-25.05"
+      ref = "nixos-25.05";
   });
   in
   {
