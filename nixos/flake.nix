@@ -4,12 +4,12 @@
   inputs = {
     # NixOS official package source, using the nixos-25.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixvim.url = "/home/${USER}/dotfiles/nixvim/flake.nix";
+    nixvim.url = "https://github.com/MrChu6606/nixOS-desktop/tree/66360e317eee362d6ac7af7b756236e84f3dffe2/nixvim";
     # Importing non-flake github repo
     librepods = {
       url = "https://github.com/kavishdevar/librepods.git";
       # Optional: pin to a commit
-      rev = "a01e16792a73deb34c5bd0c4aa019c496642ee71"
+      rev = "a01e16792a73deb34c5bd0c4aa019c496642ee71";
     };
   };
 
