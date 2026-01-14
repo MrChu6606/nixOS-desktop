@@ -8,8 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
-      #Import nvf flake
-      #inputs.nvf.nixosModules.default
     ];
 
   # Bootloader.
@@ -147,9 +145,9 @@
 	"history"
 	"docker"
 	"rsync"
-        ];
-      };
+      ];
     };
+  };
 
   # Enable fonts
   fonts = {
@@ -166,22 +164,6 @@
   services.tailscale = {
     enable = true;
   };
-
-  # Configure nvf
-  #IDK HOW THIS WORKS
-#  programs.nvf = {
-#    enable = true;
-#
-#    settings = {
-#      preset = "maximal";
-#      theme = "catppuccin";
-#      vim.viAlias = false;
-#      vim.vimAlias = true;
-#      vim.lsp = {
-#        enable = true;
-#      };
-#    };
-#  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -214,6 +196,12 @@
     tealdeer
     btop
     zathura
+    dig
+    prismlauncher
+    openjdk17
+    unzip
+    zip
+    vscode
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
