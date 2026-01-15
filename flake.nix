@@ -12,7 +12,6 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs { 
       inherit system;
-      config = { allowUnfree = true; }; 
     };
   in {
     nixosConfigurations.lotus = nixpkgs.lib.nixosSystem {
@@ -23,6 +22,7 @@
       };
 
       modules = [
+        { nixpkgs.config.allowUnfree = true; }
         ./modules/hardware.nix
         ./modules/misc.nix
         ./modules/users.nix
