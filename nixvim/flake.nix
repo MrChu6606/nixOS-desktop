@@ -9,7 +9,6 @@
   outputs = { self, ... }:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
   in
   {
     nixosModules.default = {
@@ -36,22 +35,28 @@
 	  };
 	};
 
-	extraPackages = with pkgs; [
+	packages = with pkgs; [
 	  jdk17
 	  eclipse-jdtls
 	  pyright
 	  lua-language-server
 	  lua
 	  clang-tools
+	  clang
 	  taplo
 	  yamlls
 	  nodejs        # for tsserver / TypeScript
           delve         # Go debugger for nvim-dap-go
-          gdb           # for nvim-gdb
           lldb          # for C/C++ debugging
           python3       # for nvim-dap-python
+	];
+
+	extraPackages = with pkgs; [
           ripgrep       # for telescope searches
           fd            # for telescope searches
+          gdb           # for nvim-gdb
+	  tree-sitter
+	  fzf
 	];
       };
     };
