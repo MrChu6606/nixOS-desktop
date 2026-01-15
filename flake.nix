@@ -25,9 +25,9 @@
   in {
 
     #Setup nvf and point it to config module
-    packages.system.default = 
+    packages.system.my-neovim = 
       (nvf.lib.neovimConfiguration {
-        pkgs = unstablePkgs;
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
 	modules = [ ./modules/nvf-configuration.nix ];
       }).neovim;
 
@@ -46,6 +46,11 @@
         ./modules/fonts.nix
         ./modules/shell.nix
 
+        ({unstablePkgs, ...}: {
+	  environment.systemPackages = [
+	    self.packages.${pkgs.stdenv.system}.neovim
+	  ];
+	})
         #(nixvim.nixosModules.default // { pkgs = unstablePkgs; })
       ];
     };
