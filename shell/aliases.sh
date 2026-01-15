@@ -1,7 +1,7 @@
 # nix helpers
 alias nr='sudo nixos-rebuild switch --flake ~/dotfiles/flake#lotus'
 alias ec='nvim ~/dotfiles/flake.nix'
-alias apt='nvim ~/dotfiles/modules/packages.nix'
+alias apt='cd ~/dotfiles/modules/ && nvim packages.nix'
 
 nupdate() {
   flake_dir=${1:-$PWD}   # default to current dir if no argument
