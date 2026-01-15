@@ -2,11 +2,11 @@
   description = "nixvim flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    #nixpkgs is injected from system flake
     nixvim.url = "github:pete3n/nixvim-flake";
     basenixvim.url = "github:nix-community/nixvim";
   };
-  outputs = { self, nixpkgs, nixvim, basenixvim }:
+  outputs = { self, ... }:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
@@ -18,10 +18,10 @@
         #nixvim.nixosModules.default
       ];
 
-      programs.nixvim = {
+      programs.neovim = {
         enable = true;
 
-	plugins ={
+	plugins = {
 	  lazy.enable = true;
 
 	  lsp.servers = {
@@ -41,6 +41,7 @@
 	  eclipse-jdtls
 	  pyright
 	  lua-language-server
+	  lua
 	  clang-tools
 	  taplo
 	  yamlls

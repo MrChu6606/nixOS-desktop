@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    unstablePkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "path:./nixvim";
     librepods.url = "path:./librepods";
   };
@@ -32,7 +33,7 @@
         ./modules/fonts.nix
         ./modules/shell.nix
 
-        nixvim.nixosModules.default 
+        nixvim.nixosModules.default // { pkgs = unstablePkgs; }
       ];
     };
   };
