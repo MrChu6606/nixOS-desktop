@@ -14,6 +14,9 @@
 	modules = [
 	 ./configuration.nix
 	];
+        configuration.environment.systemPackages = with pkgs; [
+          neovim
+        ];
       };
     };
   };
