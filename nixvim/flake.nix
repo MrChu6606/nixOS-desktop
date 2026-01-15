@@ -6,7 +6,7 @@
     nixvim.url = "github:pete3n/nixvim-flake";
     basenixvim.url = "github:nix-community/nixvim";
   };
-  outputs = { self, ... }:
+  outputs = { self, basenixvim, ... }:
   let
     system = "x86_64-linux";
   in
