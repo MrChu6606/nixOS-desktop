@@ -22,13 +22,6 @@
         enable = true;
         theme = "toyonight";
       };
-
-      theme = {
-        enable = true;
-        name = "tokyonight";
-        style = "night";
-        transparent = true;
-      };
     };
     spellcheck = {
       enable = true;
