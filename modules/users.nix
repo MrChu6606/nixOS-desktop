@@ -5,6 +5,6 @@
     isNormalUser = true;
     description = "nic";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; []
+    packages = with pkgs; [];
   };
 }
