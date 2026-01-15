@@ -7,16 +7,13 @@
     basenixvim.url = "github:nix-community/nixvim";
   };
   outputs = { self, basenixvim, ... }:
-  let
-    system = "x86_64-linux";
-  in
   {
-    # This is hte NicOS module that the system flake imports
+    # This is the NixOS module that the system flake imports
     nixosModules.default = { pkgs, ... }: {
 
       imports = [
       # Import basenixvim by calling its module function
-	(basenixvim.nixosModules.default {pkgs = pkgs; })
+	(basenixvim.nixosModules.default { pkgs = pkgs; })
         #nixvim.nixosModules.default
       ];
 
