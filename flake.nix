@@ -10,13 +10,21 @@
   outputs = { self, nixpkgs, nixvim, librepods }:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
+    pkgs = import nixpkgs { 
+      inherit system;
+      config.allowUnfree = true; 
+    };
   in {
     nixosConfigurations.lotus = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
 
+      nix.settings = {
+        experimental=features = [ "nix-command" "flakes" ];
+      };
+
       modules = [
         ./modules/hardware.nix
+        ./modules/misc.nix
         ./modules/users.nix
         ./modules/packages.nix
         ./modules/power-management.nix
@@ -25,7 +33,6 @@
         ./modules/hyprland.nix
         ./modules/fonts.nix
         ./modules/shell.nix
-        ./modules/misc.nix
 
         nixvim.nixosModules.default 
       ];
