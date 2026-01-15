@@ -14,7 +14,7 @@
       
       nix.enable = true;
       ts.enable = true;
-      java.enable = true
+      java.enable = true;
     };
 
     statusline.lualine.enable = true;
