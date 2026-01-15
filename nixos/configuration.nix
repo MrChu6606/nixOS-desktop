@@ -123,8 +123,8 @@
 
   # Set nvim as default editor and set cursor
   environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
+    EDITOR = "nano";
+    VISUAL = "nano";
     XCURSOR_THEME = "Numix";
     XCURSOR_SIZE = "28";
   };
@@ -184,7 +184,6 @@
     gnumake
     python3
     curl
-    neovim
     pastel    
     hyprpaper
     wireshark
