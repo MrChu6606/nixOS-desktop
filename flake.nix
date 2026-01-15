@@ -4,13 +4,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    #nixvim.url = "path:./nixvim";
     librepods.url = "path:./librepods";
     nvf.url = "github:notashelf/nvf";
   };
 
   outputs = { 
-  self, nixpkgs, nixpkgs-unstable, nixvim, librepods, nvf, ... 
+  self, nixpkgs, nixpkgs-unstable, librepods, nvf, ... 
   }:
 
   let
@@ -51,7 +50,6 @@
 	    self.packages.${pkgs.stdenv.system}.nvf
 	  ];
 	})
-        #(nixvim.nixosModules.default // { pkgs = unstablePkgs; })
       ];
     };
   };
