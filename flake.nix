@@ -17,10 +17,6 @@
     nixosConfigurations.lotus = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
 
-      nix.settings = {
-        experimental-features = [ "nix-command" "flakes" ];
-      };
-
       modules = [
         { nixpkgs.config.allowUnfree = true; }
         ./modules/hardware.nix
