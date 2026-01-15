@@ -1,7 +1,7 @@
 {config, pkgs, lib, ... }:
 
 {
-  users.users.nix = {
+  users.users.nic = {
     isNormalUser = true;
     description = "nic";
     extraGroups = [ "networkmanager" "wheel" ];
