@@ -7,17 +7,23 @@
     librepods.url = "path:../librepods";
   };
 
-  outputs = { self, nixpkgs, nixvim, librepods }: {
-    nixosConfigurations = {
-      lotus = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-	modules = [
-	 ./configuration.nix
-	];
-        configuration.environment.systemPackages = with pkgs; [
+  outputs = { self, nixpkgs, nixvim, librepods }:
+  let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+  in {
+    nixosConfigurations.lotus = nixpkgs.lib.nixosSystem {
+      inherit system pkgs;
+
+      modules = [
+        ./configuration.nix
+        nixvim.nixosModules.default 
+      ];
+
+      configuration = {
+        environment.systemPackages = with pkgs; [
           neovim
         ];
-      };
     };
   };
 }
