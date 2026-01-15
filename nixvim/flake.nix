@@ -11,7 +11,7 @@
     system = "x86_64-linux";
   in
   {
-    nixosModules.default = {
+    nixosModules.default {pkgs, ... }: {
       imports = [
 	basenixvim.nixosModules.default
         #nixvim.nixosModules.default
