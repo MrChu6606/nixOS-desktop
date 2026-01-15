@@ -14,8 +14,8 @@
   {
     nixosModules.default = {
       imports = [
-	#basenixvim.nixosModules.default
-        nixvim.nixosModules.default
+	basenixvim.nixosModules.default
+        #nixvim.nixosModules.default
       ];
 
       programs.nixvim = {
