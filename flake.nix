@@ -25,7 +25,7 @@
   in {
 
     #Setup nvf and point it to config module
-    packages.system.my-neovim = 
+    packages.x86_64-linux.my-neovim = 
       (nvf.lib.neovimConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 	modules = [ ./modules/nvf-configuration.nix ];
