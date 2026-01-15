@@ -34,7 +34,7 @@
         ./modules/fonts.nix
         ./modules/shell.nix
 
-        ./nixvim.nixosModules.default 
+        #./nixvim.nixosModules.default 
       ];
     };
   };
