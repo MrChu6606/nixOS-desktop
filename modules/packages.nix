@@ -6,5 +6,6 @@
     fastfetch kitty cmatrix cbonsai gcc gnumake python3 curl pastel
     hyprpaper wireshark imv numix-cursor-theme exiftool dunst evtest
     tealdeer btop zathura dig prismlauncher openjdk17 unzip zip vscode
+    neovim
   ];
 }

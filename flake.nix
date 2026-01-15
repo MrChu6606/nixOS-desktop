@@ -29,12 +29,6 @@
 
         nixvim.nixosModules.default 
       ];
-
-      configuration = {
-        environment.systemPackages = with pkgs; [
-          neovim
-        ];
-      };
     };
   };
 }
