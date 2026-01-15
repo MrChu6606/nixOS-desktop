@@ -33,7 +33,7 @@
         ./modules/fonts.nix
         ./modules/shell.nix
 
-        nixvim.nixosModules.default // { pkgs = unstablePkgs; }
+        (nixvim.nixosModules.default // { pkgs = unstablePkgs; })
       ];
     };
   };
