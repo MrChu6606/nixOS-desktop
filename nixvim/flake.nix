@@ -11,9 +11,12 @@
     system = "x86_64-linux";
   in
   {
+    # This is hte NicOS module that the system flake imports
     nixosModules.default = { pkgs, ... }: {
+
       imports = [
-	basenixvim.nixosModules.default
+      # Import basenixvim by calling its module function
+	(basenixvim.nixosModules.default {pkgs = pkgs; })
         #nixvim.nixosModules.default
       ];
 
