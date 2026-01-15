@@ -3,13 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixvim.url = "https://github.com/pete3n/nixvim-flake";
+    nixvim.url = "github:pete3n/nixvim-flake";
     basenixvim.url = "github:nix-community/nixvim";
   };
   outputs = { self, nixpkgs, nixvim, basenixvim }:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system };
+    pkgs = import nixpkgs { inherit system; };
   in
   {
     nixosModules.default = {

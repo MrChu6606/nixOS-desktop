@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixvim.url = "path:/nixvim";
-    librepods.url = "path:/librepods";
+    nixvim.url = "path:./nixvim";
+    librepods.url = "path:./librepods";
   };
 
   outputs = { self, nixpkgs, nixvim, librepods }:
