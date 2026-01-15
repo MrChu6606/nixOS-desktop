@@ -11,7 +11,7 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, nixvim, librepods }:
   let
     system = "x86_64-linux";
-    unstablePkgs = import nixpkgs-unstable { inherit system; }
+    unstablePkgs = import nixpkgs-unstable { inherit system; };
     pkgs = import nixpkgs { 
       inherit system;
       config = {
