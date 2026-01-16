@@ -1,13 +1,32 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   vim = {
     theme = {
       enable = true;
-      name = "gruvbox";
-      style = "dark";
+      name = "base16";
+      base16-colors = {
+        base00 = "#1f1c19"; # bg slightly lighter
+        base01 = "#292521"; # surface
+        base02 = "#3a342f"; # selection / borders
+        base03 = "#b0aaa2"; # comments/subtext softer
+        base04 = "#dcd6d0"; # dark text
+        base05 = "#dcd6d0"; # default text softer
+        base06 = "#f5f1ed"; # light text
+        base07 = "#ffffff"; # lightest
+        base08 = "#ac4935"; # danger softer
+        base09 = "#cc6f3c"; # amber softer
+        base0A = "#d9b172"; # highlight / optional
+        base0B = "#8fa88f"; # sage softer
+        base0C = "#7bb5a7"; # cyan accent
+        base0D = "#6b8fa3"; # blue / optional
+        base0E = "#a77aa0"; # purple / keywords
+        base0F = "#3a342f"; # subtle brown / borders
+      };
     };
-    
+
     visuals = {
       nvim-scrollbar.enable = false;
       nvim-web-devicons.enable = true;
@@ -20,12 +39,12 @@
     statusline = {
       lualine = {
         enable = true;
-        theme = "toyonight";
+        theme = "base16";
       };
     };
     spellcheck = {
       enable = true;
-      languages = [ "en" ];
+      languages = ["en"];
     };
 
     lsp = {
@@ -48,11 +67,7 @@
       lua.enable = true;
       python = {
         enable = true;
-        lsp.server = "pyright";
-      };
-      typst = {
-        enable = true;
-        format.type = "typestyle";
+        lsp.servers = ["pyright"];
       };
       yaml.enable = true;
       css.enable = true;
