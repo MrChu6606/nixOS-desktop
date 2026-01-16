@@ -47,7 +47,7 @@
       languages = ["en"];
     };
 
-    opt.clipboard = "unnamedplus";
+    clipboard.enable = true;
 
     lsp = {
       enable = true;
