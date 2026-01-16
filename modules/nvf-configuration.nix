@@ -47,6 +47,8 @@
       languages = ["en"];
     };
 
+    opt.clipboard = "unnamedplus"
+
     lsp = {
       enable = true;
       formatOnSave = true;
@@ -136,7 +138,10 @@
 
     assistant = {
       chatgpt.enable = false;
-      avante-nvim.enable = false;
+      avante-nvim = {
+        enable = false;
+        auto_apply_diff_after_generation = false;
+      }
     };
 
     utility = {

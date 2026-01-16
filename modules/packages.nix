@@ -1,11 +1,44 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
-    wget git rclone waybar nnn wofi librewolf qutebrowser
-    fastfetch kitty cmatrix cbonsai gcc gnumake python3 curl pastel
-    hyprpaper wireshark imv numix-cursor-theme exiftool dunst evtest
-    tealdeer btop zathura dig prismlauncher openjdk17 unzip zip vscode
+    wget
+    git
+    rclone
+    waybar
+    nnn
+    wofi
+    librewolf
+    qutebrowser
+    fastfetch
+    kitty
+    cmatrix
+    cbonsai
+    gcc
+    gnumake
+    python3
+    curl
+    pastel
+    hyprpaper
+    wireshark
+    imv
+    numix-cursor-theme
+    exiftool
+    dunst
+    evtest
+    tealdeer
+    btop
+    zathura
+    dig
+    prismlauncher
+    openjdk17
+    unzip
+    zip
+    vscode
     neovim
+    wl-clipboard
   ];
 }
