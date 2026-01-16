@@ -48,6 +48,7 @@
     };
 
     clipboard.enable = true;
+    clipboard.provides.wl-copy.enable = true;
 
     lsp = {
       enable = true;
