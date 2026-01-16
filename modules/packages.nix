@@ -40,5 +40,7 @@
     vscode
     neovim
     wl-clipboard
+    lua
+    python3
   ];
 }
