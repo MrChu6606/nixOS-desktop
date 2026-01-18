@@ -17,5 +17,4 @@
   boot.extraModprobeConfig = "options kvm_intel nested=1";
 
   programs.virt-manager.enable = true;
-  users.users.nix.extraGroups = ["libvirtd" "kvm"];
 }
