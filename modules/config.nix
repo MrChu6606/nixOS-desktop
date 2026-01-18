@@ -3,6 +3,9 @@
   lib,
   ...
 }: {
+  # Switch to Zen kernel for better desktop performance
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   # Enable virt-manager and virtualisation
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;

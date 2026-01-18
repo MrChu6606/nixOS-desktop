@@ -8,32 +8,35 @@
     nvf.url = "github:notashelf/nvf";
   };
 
-  outputs = { 
-  self, nixpkgs, nixpkgs-unstable, librepods, nvf, ... 
-  }:
-
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    librepods,
+    nvf,
+    ...
+  }: let
     system = "x86_64-linux";
-    unstablePkgs = import nixpkgs-unstable { inherit system; };
-    pkgs = import nixpkgs { 
+    unstablePkgs = import nixpkgs-unstable {inherit system;};
+    pkgs = import nixpkgs {
       inherit system;
       config = {
         allowUnfree = true;
       };
     };
   in {
-
     #Setup nvf and point it to config module
-    packages.x86_64-linux.nvf = 
+    packages.x86_64-linux.nvf =
       (nvf.lib.neovimConfiguration {
         pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-	modules = [ ./modules/nvf-configuration.nix ];
+        modules = [./modules/nvf-configuration.nix];
       }).neovim;
 
     nixosConfigurations.lotus = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
 
       modules = [
+        ./modules/config.nix
         ./modules/hardware.nix
         ./modules/misc.nix
         ./modules/users.nix
@@ -46,10 +49,10 @@
         ./modules/shell.nix
 
         ({unstablePkgs, ...}: {
-	  environment.systemPackages = [
-	    self.packages.${pkgs.stdenv.system}.nvf
-	  ];
-	})
+          environment.systemPackages = [
+            self.packages.${pkgs.stdenv.system}.nvf
+          ];
+        })
       ];
     };
   };
