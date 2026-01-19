@@ -6,6 +6,9 @@
   # Set system kernel
   boot.kernelPackages = pkgs.linuxPackages;
 
+  # Makes shutdown and boot visible for debugging
+  boot.kernelParams = ["systemd.show_status=1"];
+
   # Enable virt-manager and virtualisation
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
