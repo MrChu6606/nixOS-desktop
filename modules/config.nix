@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  # Switch to Zen kernel for better desktop performance
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # Set system kernel
+  boot.kernelPackages = pkgs.linuxPackages;
 
   # Enable virt-manager and virtualisation
   virtualisation.libvirtd.enable = true;
