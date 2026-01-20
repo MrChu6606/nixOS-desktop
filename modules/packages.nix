@@ -43,5 +43,6 @@
     lua
     python3
     tor-browser
+    pavucontrol
   ];
 }
