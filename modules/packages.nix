@@ -42,5 +42,6 @@
     wl-clipboard
     lua
     python3
+    tor-browser
   ];
 }
