@@ -44,5 +44,7 @@
     python3
     tor-browser
     pavucontrol
+    brightnessctl
+    zoom-us
   ];
 }
