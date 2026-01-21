@@ -47,7 +47,6 @@
     brightnessctl
     zoom-us
     #nnn dependencies
-    sed
     xargs
     mktemp
     fzf
