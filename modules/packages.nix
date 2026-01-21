@@ -46,5 +46,14 @@
     pavucontrol
     brightnessctl
     zoom-us
+    #nnn dependencies
+    sed
+    xargs
+    mktemp
+    fzf
+    gnupg
+    whois
+    ffmpeg
+    xdg-utils
   ];
 }
