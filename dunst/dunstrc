@@ -6,7 +6,8 @@ separator_height = 0
 padding = 12
 origin = top-right
 monitor = 0
-timeout = 5000
+timeout = 5
+idle_threshold = 120
 sort = yes
 icon_position = left
 
