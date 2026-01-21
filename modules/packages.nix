@@ -47,8 +47,6 @@
     brightnessctl
     zoom-us
     #nnn dependencies
-    xargs
-    mktemp
     fzf
     gnupg
     whois
