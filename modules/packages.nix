@@ -57,5 +57,6 @@
     clamav
     poppler-utils
     okular
+    zathura
   ];
 }
