@@ -52,5 +52,9 @@
     whois
     ffmpeg
     xdg-utils
+    #pdf stuff
+    file
+    clamav
+    poppler-utils
   ];
 }
