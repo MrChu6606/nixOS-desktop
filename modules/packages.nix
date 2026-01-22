@@ -56,7 +56,7 @@
     file
     clamav
     poppler-utils
-    okular
+    kdepackages.okular
     zathura
   ];
 }
