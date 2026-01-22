@@ -56,5 +56,6 @@
     file
     clamav
     poppler-utils
+    okular
   ];
 }
