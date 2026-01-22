@@ -34,7 +34,7 @@
     zathura
     dig
     prismlauncher
-    openjdk17
+    openjdk21
     unzip
     zip
     vscode
