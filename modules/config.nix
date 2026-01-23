@@ -7,7 +7,11 @@
   boot.kernelPackages = pkgs.linuxPackages;
 
   # Makes shutdown and boot visible for debugging
-  boot.kernelParams = ["systemd.show_status=1"];
+  boot.kernelParams = [
+    "i915.enable_psr=0"
+    "acpi_osi="
+    "pcie_aspm=off"
+  ];
 
   # Enable virt-manager and virtualisation
   #virtualisation.libvirtd.enable = true;
