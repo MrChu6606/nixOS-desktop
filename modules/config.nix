@@ -12,6 +12,7 @@
     "acpi_osi="
     "pcie_aspm=off"
     "intel_idle.max_cstate=2"
+    "usbcore.autosuspend=1"
   ];
 
   boot.kernelModules = [
