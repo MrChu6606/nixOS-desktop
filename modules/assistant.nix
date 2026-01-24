@@ -8,5 +8,5 @@
     ollama
   ];
 
-  services.ollam.enable = true;
+  services.ollama.enable = true;
 }
