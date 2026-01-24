@@ -18,12 +18,12 @@
     "i2c_hid"
     "i2c_hid_acpi"
     "hid_multitouch"
-  ]
+  ];
 
   services.udev.extraRules = ''
-      ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="on"
-      ACTION=="add", SUBSYSTEM=="i2c", TEST=="power/contol", ATTR{power/control}="on"
-    '';
+    ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="on"
+    ACTION=="add", SUBSYSTEM=="i2c", TEST=="power/contol", ATTR{power/control}="on"
+  '';
 
   # Enable virt-manager and virtualisation
   #virtualisation.libvirtd.enable = true;
