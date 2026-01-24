@@ -58,5 +58,7 @@
     poppler-utils
     kdePackages.okular
     zathura
+    #school :(
+    google-chrome
   ];
 }
