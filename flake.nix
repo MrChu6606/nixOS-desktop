@@ -47,6 +47,7 @@
         ./modules/hyprland.nix
         ./modules/fonts.nix
         ./modules/shell.nix
+        ./modules/assistant.nix
 
         ({unstablePkgs, ...}: {
           environment.systemPackages = [
