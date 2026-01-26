@@ -47,8 +47,6 @@
         ./modules/hyprland.nix
         ./modules/fonts.nix
         ./modules/shell.nix
-        ./ollama-models/assistant.nix
-
         ({unstablePkgs, ...}: {
           environment.systemPackages = [
             self.packages.${pkgs.stdenv.system}.nvf
