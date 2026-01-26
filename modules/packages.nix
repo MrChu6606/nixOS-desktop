@@ -42,7 +42,6 @@
     wl-clipboard
     lua
     python3
-    openjdk21
     tor-browser
     pavucontrol
     brightnessctl
@@ -62,7 +61,4 @@
     #school :(
     google-chrome
   ];
-
-  # Set openjdk21 as system default to avoid conflicting
-  environment.variables.JAVA_HOME = "${pkgs.openjdk21}";
 }
