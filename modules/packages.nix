@@ -34,7 +34,7 @@
     zathura
     dig
     prismlauncher
-    openjdk21
+    openjdk17
     unzip
     zip
     vscode
@@ -42,6 +42,7 @@
     wl-clipboard
     lua
     python3
+    openjdk21
     tor-browser
     pavucontrol
     brightnessctl
