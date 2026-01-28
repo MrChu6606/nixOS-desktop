@@ -8,6 +8,7 @@
   programs.zsh.interactiveShellInit = ''
     source /home/nic/dotfiles/shell/aliases.sh
     source /home/nic/dotfiles/nnn/config.sh
+    source /home/nic/dotfiles/shell/define.sh
   '';
   programs.zsh.ohMyZsh.enable = true;
   programs.zsh.ohMyZsh.theme = "crcandy";
