@@ -15,11 +15,12 @@
     "usbcore.autosuspend=1"
   ];
 
-  boot.kernelModules = [
-    "i2c_hid"
-    "i2c_hid_acpi"
-    "hid_multitouch"
-  ];
+  # a test fix for touchpad issues
+  #  boot.kernelModules = [
+  #  "i2c_hid"
+  # "i2c_hid_acpi"
+  # "hid_multitouch"
+  #];
 
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="on"
