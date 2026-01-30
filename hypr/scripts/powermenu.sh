@@ -8,7 +8,7 @@ if ! command -v wofi >/dev/null 2>&1; then
 fi
 
 # Show menu
-choice=$(printf "Shutdown\nReboot\nLogout" | wofi --show dmenu --prompt "Power Menu")
+choice=$(printf "Shutdown\nReboot\nLogout\nLock" | wofi --show dmenu --prompt "Power Menu")
 
 # Handle selection
 case "$choice" in
@@ -18,8 +18,11 @@ Shutdown)
 Reboot)
   systemctl reboot
   ;;
+Lock)
+  bash ./lock.sh
+  ;;
 Logout)
-  exec ./lock.sh
+  hyprctl exec dispatch
   ;;
 *)
   # do nothing if cancelled

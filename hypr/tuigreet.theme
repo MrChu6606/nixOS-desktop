@@ -1,0 +1,30 @@
+[colors]
+# Main text (username, messages)
+text = #e6e1dc
+
+# Clock / time display
+time = #9bb39b
+
+# Prompt container background (input box area)
+container = #2a2622
+
+# Border of the container or highlighted elements
+border = #d97742
+
+# Title (optional header or greeter greeting)
+title = #d97742
+
+# Main greeting text
+greet = #e6e1dc
+
+# Prompt label (e.g., "Password:")
+prompt = #e6e1dc
+
+# User input (typed characters; asterisks will appear as '*')
+input = #e6e1dc
+
+# Action text / hints (like "Press F1 for command menu")
+action = #a8a29e
+
+# Buttons / selections (powermenu options, etc.)
+button = #d97742

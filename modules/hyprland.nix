@@ -3,7 +3,10 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
+  hyprland-session = "${pkgs.hyprland}/share/wayland-sessions";
+in {
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
   programs.hyprland.xwayland.enable = true;
@@ -14,9 +17,21 @@
     settings = {
       default_session = {
         command = ''
-          gtkgreet \
-            --background $HOME/nixOS-desktop/Wallpapers/orange-mountains.jpg
-            --cmd Hyprland \
+          ${tuigreet} \
+          --theme $HOME/nixOS-desktop/hypr/tuigreet.theme
+          --time \
+          --astrisks \
+          --remember \
+          --remember-session \
+          --greet-align center \
+          --window-padding 0 \
+          --container-padding 1 \
+          --prompt-padding 1 \
+          --kb-command 1 \
+          --kb-power 2 \
+          --power-shutdown "systemctl poweroff" \
+          --power-reboot "systenctl reboot" \
+          --sessions ${hyprland-session}
         '';
         user = "greeter";
       };
@@ -24,11 +39,21 @@
   };
 
   environment.systemPackages = with pkgs; [
-    greetd.gtkgreet
     swaylock-effects
     hyprpaper
     wofi
     waybar
-    grim
   ];
+
+  # prevents error and bootlog spam on screen
+  # credit sjcobb2022 on github
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journa";
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
 }
