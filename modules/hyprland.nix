@@ -24,7 +24,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    greetd
     greetd.gtkgreet
     swaylock-effects
     hyprpaper
