@@ -14,9 +14,9 @@
     settings = {
       default_session = {
         command = ''
-          wlgreet \
-            --cmd Hyprland \
+          gtkgreet \
             --background $HOME/nixOS-desktop/Wallpapers/orange-mountains.jpg
+            --cmd Hyprland \
         '';
         user = "greeter";
       };
@@ -24,7 +24,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wlgreet
+    greetd
+    greetd.gtkgreet
     swaylock-effects
     hyprpaper
     wofi
