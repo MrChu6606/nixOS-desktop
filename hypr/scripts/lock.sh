@@ -1,7 +1,7 @@
 #!/usr/bib/env bash
 
 # live home wallpaper blur
-grim -g "$(hyprctl activewindowgeometry | awk \{print $2,$3,$4,$5}')" /tmp/lock.png
+grim -g "$(hyprctl activewindowgeometry | awk '{print $2,$3,$4,$5}')" /tmp/lock.png
 
 swaylock-effects \
   --screenshots \

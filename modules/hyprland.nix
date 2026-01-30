@@ -29,5 +29,6 @@
     hyprpaper
     wofi
     waybar
+    grim
   ];
 }
