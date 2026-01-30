@@ -8,9 +8,7 @@
     wget
     git
     rclone
-    waybar
     nnn
-    wofi
     librewolf
     qutebrowser
     fastfetch
@@ -22,7 +20,6 @@
     python3
     curl
     pastel
-    hyprpaper
     wireshark
     imv
     numix-cursor-theme
@@ -45,7 +42,6 @@
     tor-browser
     pavucontrol
     brightnessctl
-    zoom-us
     #nnn dependencies
     fzf
     gnupg
@@ -60,5 +56,6 @@
     zathura
     #school :(
     google-chrome
+    zoom-us
   ];
 }

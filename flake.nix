@@ -36,7 +36,6 @@
       inherit system pkgs;
 
       modules = [
-        ./modules/config.nix
         ./modules/hardware.nix
         ./modules/misc.nix
         ./modules/users.nix

@@ -1,7 +1,7 @@
 # nix helpers
-alias nr='sudo nixos-rebuild switch --flake ~/dotfiles#lotus'
-alias ec='nvim ~/dotfiles/flake.nix'
-alias apt='cd ~/dotfiles/modules/ && nvim packages.nix'
+alias nr='sudo nixos-rebuild switch --flake $HOME/nixOS-desktop\#lotus'
+alias ec='nvim $HOME/nixOS-desktop/flake.nix'
+alias apt='cd $HOME/nixOS-desktop/modules/ && nvim packages.nix'
 
 nupdate() {
   flake_dir=${1:-$PWD} # default to current dir if no argument
@@ -35,7 +35,3 @@ alias ping4='ping -c4'
 
 #for server
 alias aranov='ssh aranov@100.79.131.10'
-
-# for ollama
-alias ollama-on='sudo systemctl start ollama'
-alias ollama-off='sudo systemctl stop ollama'

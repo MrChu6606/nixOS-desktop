@@ -3,8 +3,8 @@
 
 # Ensure wofi is installed
 if ! command -v wofi >/dev/null 2>&1; then
-    echo "wofi not found! Install it first."
-    exit 1
+  echo "wofi not found! Install it first."
+  exit 1
 fi
 
 # Show menu
@@ -12,17 +12,16 @@ choice=$(printf "Shutdown\nReboot\nLogout" | wofi --show dmenu --prompt "Power M
 
 # Handle selection
 case "$choice" in
-    Shutdown)
-        systemctl poweroff
-        ;;
-    Reboot)
-        systemctl reboot
-        ;;
-    Logout)
-        hyprctl dispatch exit
-        ;;
-    *)
-        # do nothing if cancelled
-        ;;
+Shutdown)
+  systemctl poweroff
+  ;;
+Reboot)
+  systemctl reboot
+  ;;
+Logout)
+  exec ./lock.sh
+  ;;
+*)
+  # do nothing if cancelled
+  ;;
 esac
-
