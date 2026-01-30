@@ -19,10 +19,11 @@ Reboot)
   systemctl reboot
   ;;
 Lock)
-  bash ./lock.sh
+  sleep 0.1
+  bash $HOME/nixOS-desktop/hypr/scripts/lock.sh
   ;;
 Logout)
-  hyprctl exec dispatch
+  hyprctl dispatch exit
   ;;
 *)
   # do nothing if cancelled

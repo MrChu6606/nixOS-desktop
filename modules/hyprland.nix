@@ -18,7 +18,7 @@ in {
       default_session = {
         command = ''
           ${tuigreet} \
-          --theme $HOME/nixOS-desktop/hypr/tuigreet.theme
+          --theme tuigreet
           --time \
           --asterisks \
           --remember \

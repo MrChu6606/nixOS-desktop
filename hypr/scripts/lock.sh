@@ -1,21 +1,14 @@
 #!/usr/bin/env bash
 
-# live home wallpaper capture incase you dont want blurred
-#geom=$(hyprctl activewindowgeometry | awk '{print $4 "x" $5 "+" $3}')
-#grim -g "$geom" /tmp/lock.png
-
 swaylock \
-  --screenshots \
+  --image $HOME/nixOS-desktop/Wallpapers/red-forest.jpg \
   --clock \
   --indicator \
   --indicator-radius 110 \
   --indicator-thickness 6 \
-  --effect-blur 7x5 \
-  --effect-vignette 0.5:0.5 \
-  --ring-color d97742 \
-  --key-hl-color 9bb39b \
-  --line-color 00000000 \
+  --ring-color c65c5c \
+  --key-hl-color d97742 \
   --inside-color 1e1b18dd \
   --text-color e6e1dc \
-  --grace 2 \
-  --fade-in 0.1
+  --effect-blur 7x5 \
+  --effect-vignette 0.4:0.4
