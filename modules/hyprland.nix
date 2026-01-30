@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
+  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   hyprland-session = "${pkgs.hyprland}/share/wayland-sessions";
 in {
   programs.hyprland.enable = true;
@@ -20,7 +20,7 @@ in {
           ${tuigreet} \
           --theme $HOME/nixOS-desktop/hypr/tuigreet.theme
           --time \
-          --astrisks \
+          --asterisks \
           --remember \
           --remember-session \
           --greet-align center \
@@ -30,7 +30,7 @@ in {
           --kb-command 1 \
           --kb-power 2 \
           --power-shutdown "systemctl poweroff" \
-          --power-reboot "systenctl reboot" \
+          --power-reboot "systemctl reboot" \
           --sessions ${hyprland-session}
         '';
         user = "greeter";
