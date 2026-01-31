@@ -42,6 +42,7 @@
     tor-browser
     pavucontrol
     brightnessctl
+    vesktop
     #nnn dependencies
     fzf
     gnupg
