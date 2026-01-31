@@ -15,3 +15,19 @@ compinit
 
 # export nnn variables
 source $HOME/nixOS-desktop/nnn/config.sh
+
+# enable pure
+autoload -U promptinit; promptinit
+autoload -U prompt pure
+
+# customize colors
+PURE_PROMPT_SYMBOL_COLOR="%F{#d97742}"    # amber arrow
+PURE_PROMPT_PREFIX_COLOR="%F{#a8a29e}"    # jobs, errors, etc.
+PURE_PROMPT_GIT_BRANCH_COLOR="%F{#9bb39b}" # git branch
+PURE_PROMPT_TIME_COLOR="%F{#e6e1dc}"      # clock / time
+
+# Optional: shorten path color
+PURE_PROMPT_PATH_COLOR="%F{#e6e1dc}"      # default path text
+
+# activate pure
+prompt pure

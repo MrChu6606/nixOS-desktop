@@ -4,12 +4,21 @@
   lib,
   ...
 }: {
-  programs.zsh.enable = true;
-  programs.zsh.interactiveShellInit = ''
-    source $HOME/nixOS-desktop/shell/aliases.sh
-    source $HOME/nixOS-desktop/nnn/config.sh
-  '';
-  #programs.zsh.ohMyZsh.enable = true;
-  #programs.zsh.ohMyZsh.theme = "crcandy";
-  #programs.zsh.ohMyZsh.plugins = ["sudo" "history" "docker" "rsync"];
+  programs.zsh = {
+    enable = true;
+
+    interactiveShellInit = ''
+      source $HOME/nixOS-desktop/shell/aliases.sh
+      source $HOME/nixOS-desktop/nnn/config.sh
+    '';
+
+    promptInit = ''
+      autoload -U promptinit; promptinit
+      prompt pure
+    '';
+  };
+
+  environment.systemPackages = with pkgs; [
+    zsh-prompt-pure
+  ];
 }
