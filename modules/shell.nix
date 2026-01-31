@@ -17,12 +17,11 @@
       prompt pure
     '';
 
-    oh-my-zsh = {
-      enable = true;
+    ohMyZsh = {
+      enable = false;
       plugins = [
         "sudo"
         "extract"
-        "git"
         "history-substring-search"
       ];
     };
