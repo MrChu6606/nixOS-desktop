@@ -19,6 +19,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    zsh-prompt-pure
+    pure-prompt
   ];
 }
