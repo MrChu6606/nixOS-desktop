@@ -16,6 +16,35 @@
       autoload -U promptinit; promptinit
       prompt pure
     '';
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "sudo"
+        "extract"
+        "autoenv"
+        "git"
+        "history-substring-search"
+      ];
+      customPlugins = [
+        {
+          name = "zsh-nix-shell";
+          src = pkgs.zsh-nix-shell;
+        }
+        {
+          name = "zsh-you-should-use";
+          src = pkgs.zsh-you-should-use;
+        }
+        {
+          name = "zsh-syntax-highlighting";
+          src = pkgs.zsh-syntax-highlighting;
+        }
+        {
+          name = "zsh-completions";
+          src = pkgs.zsh-completions;
+        }
+      ];
+    };
   };
 
   environment.systemPackages = with pkgs; [
