@@ -48,6 +48,7 @@
     whois
     ffmpeg
     xdg-utils
+    localsend
     #pdf stuff
     file
     clamav

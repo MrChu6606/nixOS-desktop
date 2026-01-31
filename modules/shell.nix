@@ -22,7 +22,6 @@
       plugins = [
         "sudo"
         "extract"
-        "autoenv"
         "git"
         "history-substring-search"
       ];
