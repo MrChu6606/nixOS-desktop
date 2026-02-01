@@ -9,7 +9,7 @@
     git
     rclone
     nnn
-    librewolf
+    chromium
     qutebrowser
     mpv
     yt-dlp
@@ -59,8 +59,7 @@
     poppler-utils
     kdePackages.okular
     zathura
-    #school :(
-    google-chrome
+    #school
     zoom-us
   ];
 }
