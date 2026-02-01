@@ -11,6 +11,8 @@
     nnn
     librewolf
     qutebrowser
+    mpv
+    yt-dlp
     fastfetch
     kitty
     cmatrix

@@ -1,0 +1,2 @@
+[wofi]
+style = $HOME/nixOS-desktop/wofi/style.css

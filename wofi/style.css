@@ -1,0 +1,59 @@
+/* Main window */
+window {
+  background-color: #2a2622; /* surface */
+  border-radius: 14px;
+}
+
+/* Everything inside */
+#outer-box {
+  padding: 10px;
+}
+
+/* Text input for filtering */
+#input {
+  background-color: #1e1b18; /* bg */
+  color: #e6e1dc; /* text */
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 16px;
+}
+
+/* Scroll container */
+#scroll {
+  background-color: #2a2622; /* surface */
+  border-radius: 10px;
+}
+
+/* Container for all entries */
+#inner-box {
+  padding: 4px 0;
+}
+
+/* Each entry */
+#entry {
+  background-color: transparent;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Text inside each entry */
+#text {
+  color: #e6e1dc; /* main text */
+}
+
+/* Selected entry (highlighted) */
+#entry:selected {
+  background-color: #9bb39b; /* sage */
+  border-radius: 6px;
+}
+
+/* Selected text */
+#text:selected {
+  color: #1e1b18; /* bg color for contrast */
+}
+
+/* Images inside entries */
+#img {
+  border-radius: 4px;
+  margin-right: 8px;
+}
