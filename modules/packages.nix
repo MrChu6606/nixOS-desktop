@@ -13,6 +13,7 @@
     qutebrowser
     mpv
     yt-dlp
+    streamlink
     fastfetch
     kitty
     cmatrix

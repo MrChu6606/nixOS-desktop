@@ -1,6 +1,8 @@
 # =========================
-# Minimal Dark Qutebrowser Config
+# Qutebrowser Config
 # =========================
+
+config.load_autoconfig()
 
 # General settings
 c.auto_save.session = False  # Remember open tabs between sessions
@@ -11,11 +13,37 @@ c.url.searchengines = {
     "DEFAULT": "https://duckduckgo.com/?q={}",
 }
 
-# Completion menu
-c.completion.height = "25%"
-c.fonts.completion.entry = "12pt Fira Code"
-c.fonts.completion.category = "13pt Fira Code"
-c.fonts.completion.entry = "12pt Fira Code"
+# Enable adblocking
+c.content.blocking.enabled = True
+c.content.blocking.method = "both"
+c.content.blocking.adblock.lists = [
+    "https://easylist.to/easylist/easylist.txt",
+    "https://easylist.to/easylist/easyprivacy.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssests/master/filters/filters.txt",
+]
+
+# Content blocking
+c.content.canvas_reading = False
+c.content.headers.do_not_track = True
+
+# Default: block all cookies
+c.content.cookies.accept = "never"
+c.content.cookies.store = False
+
+# Alias to add websites to Whitelist
+c.aliases["whitelist"] = (
+    "set content.cookies.store True;; set content.cookies.accept all"
+)
+c.aliases["temp-allow"] = (
+    "set -p content.cookies.store True;; set -p content.cookies.accept all"
+)
+
+# External player for YouTube
+config.bind("M", "hint links spawn mpv {hint-url}")
+
+# External player for Live Streams
+config.bind("t", 'spawn streamlink "$(url) best')
+
 
 # =========================
 # Appearance
@@ -37,6 +65,11 @@ c.colors.statusbar.insert.bg = sage
 c.colors.statusbar.insert.fg = bg
 c.colors.statusbar.command.bg = surface
 c.colors.statusbar.command.fg = text
+
+# Hints
+c.fonts.hints = "10pt Monospace"
+c.hints.border = "1px solid #666"
+c.hints.padding = {"top": 0, "bottom": 0, "left": 1, "right": 1}
 
 # Tabs
 c.tabs.position = "top"
@@ -66,6 +99,12 @@ c.colors.webpage.darkmode.policy.images = "smart"
 # Fonts
 c.fonts.default_family = ["Fira Code", "Monospace"]
 c.fonts.default_size = "14pt"
+
+# Completion menu
+c.completion.height = "25%"
+c.fonts.completion.entry = "12pt Fira Code"
+c.fonts.completion.category = "13pt Fira Code"
+c.fonts.completion.entry = "12pt Fira Code"
 
 # =========================
 # Keybindings
