@@ -5,6 +5,8 @@
   ...
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

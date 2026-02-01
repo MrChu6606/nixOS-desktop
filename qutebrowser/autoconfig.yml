@@ -10,3 +10,12 @@ settings:
     global: all
   content.cookies.store:
     global: true
+  content.register_protocol_handler:
+    https://outlook.office365.com?mailtouri=%25s: true
+  editor.command:
+    global:
+    - nvim
+    - -f
+    - '{file}'
+    - -c
+    - normal {line}G{column0}l

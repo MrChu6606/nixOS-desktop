@@ -19,7 +19,6 @@ c.content.blocking.method = "both"
 c.content.blocking.adblock.lists = [
     "https://easylist.to/easylist/easylist.txt",
     "https://easylist.to/easylist/easyprivacy.txt",
-    "https://raw.githubusercontent.com/uBlockOrigin/uAssests/master/filters/filters.txt",
 ]
 
 # Content blocking
@@ -37,12 +36,20 @@ c.aliases["whitelist"] = (
 c.aliases["temp-allow"] = (
     "set -p content.cookies.store True;; set -p content.cookies.accept all"
 )
+c.aliases["unlist"] = (
+    "set content.cookies.store False;; set content.cookies.accept never"
+)
+c.aliases["no3rd"] = (
+    "set content.cookies.store True;; set content.cookies.accept no-3rdparty"
+)
 
 # External player for YouTube
-config.bind("M", "hint links spawn mpv {hint-url}")
+# doesnt quite work
+# config.bind("y", "spawn mpv --force-window=immediate {url}")
 
 # External player for Live Streams
-config.bind("t", 'spawn streamlink "$(url) best')
+# works wonderfully
+config.bind("t", 'spawn streamlink --player mpv "{url}" best')
 
 
 # =========================
@@ -93,7 +100,7 @@ c.colors.completion.category.border.top = bg
 c.colors.completion.category.border.bottom = bg
 
 # Dark mode for webpages
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 c.colors.webpage.darkmode.policy.images = "smart"
 
 # Fonts
