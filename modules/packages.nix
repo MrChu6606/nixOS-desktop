@@ -63,6 +63,6 @@
     zoom-us
     #fonts
     noto-fonts-cjk-sans
-    ttf-mscorefonts-installer
+    corefonts
   ];
 }
