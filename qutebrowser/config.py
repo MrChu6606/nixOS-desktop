@@ -26,7 +26,7 @@ c.content.canvas_reading = False
 c.content.headers.do_not_track = True
 
 # Default: block all cookies
-c.content.cookies.accept = "never"
+c.content.cookies.accept = "no-3rdparty"
 c.content.cookies.store = False
 
 # Alias to add websites to Whitelist
@@ -45,7 +45,7 @@ c.aliases["no3rd"] = (
 
 # External player for YouTube
 # doesnt quite work
-# config.bind("y", "spawn mpv --force-window=immediate {url}")
+config.bind("Y", 'spawn mpv "{url}" best')
 
 # External player for Live Streams
 # works wonderfully

@@ -1,0 +1,3 @@
+In order to get cookies to make mpv work, run command
+yt-dlp --cookies-from-browser qutebrowser --cookies $HOME/nixOS-desktop/mpv/yt-cookies.txt "https://www.youtube.com/watch?v=VIDEOID"
+where the youtube url is any video
