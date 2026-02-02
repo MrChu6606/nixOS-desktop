@@ -61,5 +61,8 @@
     zathura
     #school
     zoom-us
+    #fonts
+    noto-fonts-cjk
+    ttf-mscorefonts-installer
   ];
 }
