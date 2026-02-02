@@ -62,7 +62,7 @@
     #school
     zoom-us
     #fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     ttf-mscorefonts-installer
   ];
 }
