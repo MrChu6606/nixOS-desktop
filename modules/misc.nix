@@ -43,7 +43,10 @@
   xdg.portal.enable = true;
 
   swapDevices = [
-    { device = "/swapfile; size = 8 * 1024"}
+    {
+      device = "/swapfile";
+      size = 8 * 1024;
+    }
   ];
 
   system.stateVersion = "25.05";
