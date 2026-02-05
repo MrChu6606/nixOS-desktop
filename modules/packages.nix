@@ -3,12 +3,13 @@
   pkgs,
   lib,
   ...
-}: {
-  environment.systemPackages = with pkgs; [
+}: let
+  stable = with pkgs; [
     wget
     git
     rclone
     nnn
+    tor-browser
     chromium
     qutebrowser
     mpv
@@ -18,9 +19,7 @@
     kitty
     cmatrix
     cbonsai
-    gcc
     gnumake
-    python3
     curl
     pastel
     wireshark
@@ -34,15 +33,11 @@
     zathura
     dig
     prismlauncher
-    openjdk17
     unzip
     zip
     vscode
     neovim
     wl-clipboard
-    lua
-    python3
-    tor-browser
     pavucontrol
     brightnessctl
     vesktop
@@ -65,4 +60,15 @@
     noto-fonts-cjk-sans
     corefonts
   ];
+
+  unstable = with pkgs; [
+    jdt-language-server
+    checkstyle
+    openjdk17
+    python3
+    lua
+    gcc
+  ];
+in {
+  environment.systemPackages = stable ++ unstable;
 }
