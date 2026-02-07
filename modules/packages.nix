@@ -1,10 +1,12 @@
 {
   config,
   pkgs,
+  stablePkgs,
+  unstablePkgs,
   lib,
   ...
 }: let
-  stable = with pkgs; [
+  stable = with stablePkgs; [
     wget
     git
     rclone
@@ -61,7 +63,7 @@
     corefonts
   ];
 
-  unstable = with pkgs; [
+  unstable = with unstablePkgs; [
     jdt-language-server
     checkstyle
     openjdk17
