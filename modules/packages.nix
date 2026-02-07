@@ -68,6 +68,7 @@
     python3
     lua
     gcc
+    linuxKernel.packages.linux_zen.xpadneo
   ];
 in {
   environment.systemPackages = stable ++ unstable;
