@@ -33,13 +33,14 @@
       }).neovim;
 
     nixosConfigurations.lotus = nixpkgs.lib.nixosSystem {
-      inherit system pkgs;
-
-      nixpkgs.overlays = [
-        (import ./overlays/xpadneo-unstable.nix unstablePkgs)
-      ];
+      inherit system;
 
       modules = [
+        {
+          nixpkgs.overlays = [
+            (import ./overlays/xpadneo-unstable.nix unstablePkgs)
+          ];
+        }
         ./modules/hardware.nix
         ./modules/misc.nix
         ./modules/users.nix
