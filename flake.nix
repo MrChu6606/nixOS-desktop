@@ -35,6 +35,10 @@
     nixosConfigurations.lotus = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
 
+      nixpkgs.overlays = [
+        (import ./overlays/xpadneo-unstable.nix unstablePkgs)
+      ];
+
       modules = [
         ./modules/hardware.nix
         ./modules/misc.nix
