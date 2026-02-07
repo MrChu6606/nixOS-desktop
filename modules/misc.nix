@@ -8,7 +8,7 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # enables fwupd to flash update bios
   services.fwupd.enable = true;

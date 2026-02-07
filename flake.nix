@@ -26,7 +26,6 @@
       };
 
       overlays = [
-        (import ./overlays/xpadneo-overlay.nix)
       ];
     };
 
