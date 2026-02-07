@@ -1,3 +1,3 @@
-unstablePkgs: final: prev: {
-  inherit (unstablePkgs) xpadneo;
+final: prev: {
+  xpadneo = final.linuxKernel.packages.linux_zen.xpadneo;
 }

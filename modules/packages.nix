@@ -3,6 +3,7 @@
   pkgs,
   stablePkgs,
   unstablePkgs,
+  extraPackages,
   lib,
   ...
 }: let
@@ -71,8 +72,6 @@
     lua
     gcc
   ];
-
-  nvfPkg = self.packages.${pkgs.stdenv.system}.nvf;
 in {
-  environment.systemPackages = stable ++ unstable ++ [nvfPkg];
+  environment.systemPackages = stable ++ unstable ++ [extraPackages];
 }

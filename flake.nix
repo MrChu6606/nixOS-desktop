@@ -27,10 +27,14 @@
     };
 
     # unstable nixpkgs
-    unstablePkgs = import nixpkgs-unstable {inherit system;};
+    unstablePkgs = import nixpkgs-unstable {
+      inherit system;
 
-    # stable nixpkgs
-    stablePkgs = pkgs;
+      # setup overlays
+      nixpkgs.overlays = [
+        (import ./overlays/xpadneo-unstable.nix unstablePkgs)
+      ];
+    };
   in {
     #Setup nvf and point it to config module
     packages.x86_64-linux.nvf =
@@ -55,15 +59,13 @@
         ./modules/shell.nix
       ];
 
-      # setup overlays
-      nixpkgs.overlays = [
-        (import ./overlays/xpadneo-unstable.nix unstablePkgs)
-      ];
-
       # pass extra args to all modules
       extraModuleArgs = {
-        stablePkgs = stablePkgs;
+        stablePkgs = pkgs;
         unstablePkgs = unstablePkgs;
+        extraPackages = {
+          nvf = self.packages.${pkgs.sdtenv.system}.nvf;
+        };
       };
     };
   };
