@@ -18,19 +18,19 @@
   }: let
     system = "x86_64-linux";
 
-    # unstable nixpkgs
-    unstablePkgs = import nixpkgs-unstable {inherit system;};
-
-    # stable nixpkgs
-    stablePkgs = import nixpkgs {
+    # pkgs nixosSystem uses
+    pkgs = import nixpkgs {
       inherit system;
       config = {
         allowUnfree = true;
       };
-
-      # pkgs nixsoSystem will use
-      pkgs = stablePkgs;
     };
+
+    # unstable nixpkgs
+    unstablePkgs = import nixpkgs-unstable {inherit system;};
+
+    # stable nixpkgs
+    stablePkgs = pkgs;
   in {
     #Setup nvf and point it to config module
     packages.x86_64-linux.nvf =
