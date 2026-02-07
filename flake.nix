@@ -53,11 +53,6 @@
         ./modules/hyprland.nix
         ./modules/fonts.nix
         ./modules/shell.nix
-        ({unstablePkgs, ...}: {
-          environment.systemPackages = [
-            self.packages.${pkgs.stdenv.system}.nvf
-          ];
-        })
       ];
 
       # setup overlays
@@ -66,9 +61,9 @@
       ];
 
       # pass extra args to all modules
-      extraModuleArs = {
+      extraModuleArgs = {
         stablePkgs = stablePkgs;
-        unstablPkgs = unstablePkgs;
+        unstablePkgs = unstablePkgs;
       };
     };
   };

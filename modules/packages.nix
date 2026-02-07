@@ -71,6 +71,8 @@
     lua
     gcc
   ];
+
+  nvfPkg = self.packages.${pkgs.stdenv.system}.nvf;
 in {
-  environment.systemPackages = stable ++ unstable;
+  environment.systemPackages = stable ++ unstable ++ [nvfPkg];
 }
