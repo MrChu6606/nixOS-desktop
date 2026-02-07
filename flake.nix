@@ -18,9 +18,6 @@
   }: let
     system = "x86_64-linux";
 
-    # import overlay
-    xpadOverlay = import ./overlays/xpadneo-overlay.nix;
-
     # pkgs nixosSystem uses
     pkgs = import nixpkgs {
       inherit system;
@@ -28,7 +25,9 @@
         allowUnfree = true;
       };
 
-      overlays = [xpadOverlay];
+      overlays = [
+        (import ./overlays/xpadneo-overlay.nix)
+      ];
     };
 
     # unstable nixpkgs
