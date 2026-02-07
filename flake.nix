@@ -17,12 +17,19 @@
     ...
   }: let
     system = "x86_64-linux";
+
+    # unstable nixpkgs
     unstablePkgs = import nixpkgs-unstable {inherit system;};
-    pkgs = import nixpkgs {
+
+    # stable nixpkgs
+    stablePkgs = import nixpkgs {
       inherit system;
       config = {
         allowUnfree = true;
       };
+
+      # pkgs nixsoSystem will use
+      pkgs = stablePkgs;
     };
   in {
     #Setup nvf and point it to config module
@@ -33,14 +40,9 @@
       }).neovim;
 
     nixosConfigurations.lotus = nixpkgs.lib.nixosSystem {
-      inherit system;
+      inherit system pkgs;
 
       modules = [
-        {
-          nixpkgs.overlays = [
-            (import ./overlays/xpadneo-unstable.nix unstablePkgs)
-          ];
-        }
         ./modules/hardware.nix
         ./modules/misc.nix
         ./modules/users.nix
@@ -57,6 +59,17 @@
           ];
         })
       ];
+
+      # setup overlays
+      nixpkgs.overlays = [
+        (import ./overlays/xpadneo-unstable.nix unstablePkgs)
+      ];
+
+      # pass extra args to all modules
+      extraModuleArs = {
+        stablePkgs = stablePkgs;
+        unstablPkgs = unstablePkgs;
+      };
     };
   };
 }
