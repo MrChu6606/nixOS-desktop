@@ -12,7 +12,6 @@
   };
   # Enable support for xbox controllers
   hardware.xone.enable = true;
-  hardware.xpadneo.enable = true;
 
   services.blueman.enable = true;
 }
