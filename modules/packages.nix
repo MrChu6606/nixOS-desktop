@@ -1,13 +1,12 @@
 {
   config,
   pkgs,
-  stablePkgs,
   unstablePkgs,
-  extraPackages,
+  nvfPkg,
   lib,
   ...
 }: let
-  stable = with stablePkgs; [
+  stable = with pkgs; [
     wget
     git
     rclone
@@ -73,5 +72,5 @@
     gcc
   ];
 in {
-  environment.systemPackages = stable ++ unstable ++ [extraPackages];
+  environment.systemPackages = stable ++ unstable ++ [nvfPkg];
 }

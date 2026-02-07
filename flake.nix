@@ -31,17 +31,20 @@
       inherit system;
 
       # setup overlays
-      nixpkgs.overlays = [
-        (import ./overlays/xpadneo-unstable.nix unstablePkgs)
-      ];
+      #nixpkgs.overlays = [
+      #(import ./overlays/xpadneo-unstable.nix unstablePkgs pkgs)
+      #];
     };
-  in {
-    #Setup nvf and point it to config module
-    packages.x86_64-linux.nvf =
+
+    # pass nvf as part of the system packages
+    nvfPkg =
       (nvf.lib.neovimConfiguration {
         pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
         modules = [./modules/nvf-configuration.nix];
       }).neovim;
+  in {
+    # setup nvf and point it to config module
+    packages.x86_64-linux.nvf = nvfPkg;
 
     nixosConfigurations.lotus = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
@@ -57,16 +60,10 @@
         ./modules/hyprland.nix
         ./modules/fonts.nix
         ./modules/shell.nix
+        {
+          _module.args = {inherit unstablePkgs nvfPkg;};
+        }
       ];
-
-      # pass extra args to all modules
-      extraModuleArgs = {
-        stablePkgs = pkgs;
-        unstablePkgs = unstablePkgs;
-        extraPackages = {
-          nvf = self.packages.${pkgs.sdtenv.system}.nvf;
-        };
-      };
     };
   };
 }
