@@ -18,22 +18,22 @@
   }: let
     system = "x86_64-linux";
 
+    # import overlay
+    xpadOverlay = import ./overlays/xpadneo-overlay.nix;
+
     # pkgs nixosSystem uses
     pkgs = import nixpkgs {
       inherit system;
       config = {
         allowUnfree = true;
       };
+
+      overlays = [xpadOverlay];
     };
 
     # unstable nixpkgs
     unstablePkgs = import nixpkgs-unstable {
       inherit system;
-
-      # setup overlays
-      #nixpkgs.overlays = [
-      #(import ./overlays/xpadneo-unstable.nix unstablePkgs pkgs)
-      #];
     };
 
     # pass nvf as part of the system packages

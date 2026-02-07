@@ -11,7 +11,7 @@
     Policy.AutoEnable = true;
   };
   # Enable support for xbox controllers
-  #hardware.xpadneo.enable = true;
+  hardware.xpadneo.enable = true;
 
   services.blueman.enable = true;
 }
