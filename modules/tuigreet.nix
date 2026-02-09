@@ -9,7 +9,6 @@
 in {
   services.greetd = {
     enable = true;
-    greeter = null;
 
     settings = {
       default_session = {
