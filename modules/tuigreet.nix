@@ -7,6 +7,10 @@
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   hyprland-session = "${pkgs.hyprland}/share/wayland-sessions";
 in {
+  # System wide theme for tuigreet
+  environment.etc."tuigreet/themes/tuigree.theme".source = ../greetd/themes/tuigreet.theme;
+
+  # Configure tuigreet
   services.greetd = {
     enable = true;
 
@@ -14,7 +18,7 @@ in {
       default_session = {
         command = ''
           ${tuigreet} \
-          --theme-path $HOME/nixOS-desktop/greetd/themes \
+          --theme-path /etc/tuigreet/themes \
           --theme tuigreet \
           --time \
           --asterisks \
