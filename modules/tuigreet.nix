@@ -9,13 +9,14 @@
 in {
   services.greetd = {
     enable = true;
-    greeter = pkgs.tuigreet;
+    greeter = null;
 
     settings = {
       default_session = {
         command = ''
           ${tuigreet} \
-          --theme tuigreet
+          --theme-path $HOME/nixOS-desktop/greetd/themes \
+          --theme tuigreet \
           --time \
           --asterisks \
           --remember \
