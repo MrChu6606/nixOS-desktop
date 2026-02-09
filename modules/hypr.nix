@@ -5,7 +5,7 @@
   ...
 }: {
   programs.hyprland.enable = true;
-  programs.withUWSM = true;
+  programs.hyprland.withUWSM = true;
   programs.hyprland.xwayland.enable = true;
 
   environment.systemPackages = with pkgs; [
