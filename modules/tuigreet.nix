@@ -7,12 +7,9 @@
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   hyprland-session = "${pkgs.hyprland}/share/wayland-sessions";
 in {
-  programs.hyprland.enable = true;
-  programs.hyprland.withUWSM = true;
-  programs.hyprland.xwayland.enable = true;
-
   services.greetd = {
     enable = true;
+    greeter = pkgs.tuigreet;
 
     settings = {
       default_session = {
@@ -37,13 +34,6 @@ in {
       };
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    swaylock-effects
-    hyprpaper
-    wofi
-    waybar
-  ];
 
   # prevents error and bootlog spam on screen
   # credit sjcobb2022 on github

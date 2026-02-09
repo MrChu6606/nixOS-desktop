@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    librepods.url = "path:./librepods";
     nvf.url = "github:notashelf/nvf";
   };
 
@@ -12,7 +11,6 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
-    librepods,
     nvf,
     ...
   }: let
@@ -55,7 +53,8 @@
         ./modules/power-management.nix
         ./modules/networking.nix
         ./modules/bluetooth.nix
-        ./modules/hyprland.nix
+        ./modules/hypr.nix
+        ./modules/tuigreet.nix
         ./modules/fonts.nix
         ./modules/shell.nix
         {

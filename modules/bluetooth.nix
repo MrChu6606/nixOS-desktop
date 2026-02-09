@@ -11,7 +11,8 @@
     Policy.AutoEnable = true;
   };
   # Enable support for xbox controllers
-  #hardware.xpadneo.enable = true;
+  # doesnt seem to work on latest linux kernel
+  #hardware.xone.enable = true;
 
   services.blueman.enable = true;
 }
