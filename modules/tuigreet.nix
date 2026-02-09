@@ -8,7 +8,7 @@
   hyprland-session = "${pkgs.hyprland}/share/wayland-sessions";
 in {
   # System wide theme for tuigreet
-  environment.etc."tuigreet/themes/tuigree.theme".source = ../greetd/themes/tuigreet.theme;
+  environment.etc."tuigreet/themes/tuigreet.theme".source = ../greetd/themes/tuigreet.theme;
 
   # Configure tuigreet
   services.greetd = {
@@ -16,24 +16,7 @@ in {
 
     settings = {
       default_session = {
-        command = ''
-          ${tuigreet} \
-          --theme-path /etc/tuigreet/themes \
-          --theme tuigreet \
-          --time \
-          --asterisks \
-          --remember \
-          --remember-session \
-          --greet-align center \
-          --window-padding 0 \
-          --container-padding 1 \
-          --prompt-padding 1 \
-          --kb-command 1 \
-          --kb-power 2 \
-          --power-shutdown "systemctl poweroff" \
-          --power-reboot "systemctl reboot" \
-          --sessions ${hyprland-session}
-        '';
+        command = "${tuigreet} --theme-path /etc/tuigreet/themes --theme tuigreet --time --asterisks --remember --remember-session --greet-align center --window-padding 0 --container-padding 1 --prompt-padding 1 --kb-command 1 --kb-power 2 --power-shutdown 'systemctl poweroff' --power-reboot 'systemctl reboot' --sessions ${hyprland-session}";
         user = "greeter";
       };
     };
