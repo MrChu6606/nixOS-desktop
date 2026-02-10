@@ -11,11 +11,6 @@
       enable = true;
       wayland = true;
     };
-
-    displayManager.autoLogin = {
-      enable = true;
-      user = "nic";
-    };
   };
 
   # set wallpaper
