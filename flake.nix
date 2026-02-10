@@ -54,7 +54,7 @@
         ./modules/networking.nix
         ./modules/bluetooth.nix
         ./modules/hypr.nix
-        ./modules/tuigreet.nix
+        ./modules/greeter.nix
         ./modules/fonts.nix
         ./modules/shell.nix
         {
