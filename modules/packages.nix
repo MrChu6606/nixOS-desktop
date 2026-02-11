@@ -70,7 +70,7 @@
     python3
     lua
     jdt-language-server
-    luacheck
+    stylua
     luaformatter
     gcc
   ];
