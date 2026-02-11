@@ -69,6 +69,9 @@
     openjdk17
     python3
     lua
+    jdt-language-server
+    luacheck
+    luaformatter
     gcc
   ];
 in {
