@@ -55,11 +55,6 @@
       formatOnSave = true;
       inlayHints.enable = true;
       nvim-docs-view.enable = true;
-
-      jdtls = {
-        enable = true;
-        package = pkgs.jdt-language-server;
-      };
     };
 
     languages = {
@@ -142,25 +137,6 @@
           })
         '';
         after = ["neotest-python" "neotest-java" "neotest-dotnet"];
-      };
-    };
-
-    vim.extraPlugins = {
-      java_format = {
-        package = pkgs.vimPlugins.null_ls; # or install via NVF
-        setup = ''
-          local null_ls = require("null-ls")
-          null_ls.setup({
-            sources = {
-              null_ls.builtins.formatting.eclipse_jdtls.with({
-                extra_args = { "-config", os.getenv("FORMATTER_CONFIG") }
-              }),
-              null_ls.builtins.diagnostics.checkstyle.with({
-                extra_args = { "-c", os.getenv("CHECKSTYLE_CONFIG") }
-              }),
-            },
-          })
-        '';
       };
     };
 
