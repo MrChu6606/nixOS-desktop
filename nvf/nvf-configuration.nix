@@ -52,7 +52,7 @@
 
     lsp = {
       enable = true;
-      formatOnSave = true;
+      formatOnSave = false;
       inlayHints.enable = true;
       nvim-docs-view.enable = true;
     };
