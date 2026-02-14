@@ -140,17 +140,17 @@
       multicursors.enable = false;
       smart-splits.enable = true;
       undotree.enable = true; # use with :undotree
-      precognition.enable = true; # shows hints for navigation
+      motion.precognition.enable = true; # shows hints for navigation
 
       images = {
         image-nvim.enable = false;
         img-clip.enable = false;
       };
+    };
 
-      terminal.toggleterm = {
-        enable = true;
-        lazygit.enable = false;
-      };
+    terminal.toggleterm = {
+      enable = true;
+      lazygit.enable = false;
     };
 
     ui = {
