@@ -4,10 +4,6 @@
   ...
 }: {
   vim = {
-    luaConfigPost = ''
-        -- Force invlude the nix-wrapped paths just in case
-        package.path = package.path .. ";/nix/store/*-vim-pack-dir/pack/mnw/start/nvim-treesitter/lua/?.lua"
-    '';
 
     theme = {
       enable = true;
@@ -196,19 +192,7 @@
       backup = false;
     };
 
-    lazy = {
-        enable = true;
-        #Prevent core modules from lazy loading
-        plugins.nvim-treesitter = {
-            enabled = false;
-            package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
-        };
-    };
+    lazy.enable = false;
 
-    extraPlugins = with pkgs.vimPlugins; {
-        nvim-treesitter-core = {
-            package = nvim-treesitter;
-        };
-    };
   };
 }
