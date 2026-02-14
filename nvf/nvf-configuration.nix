@@ -4,6 +4,11 @@
   ...
 }: {
   vim = {
+    luaConfigPost = ''
+        -- Force invlude the nix-wrapped paths just in case
+        package.path = package.path .. ";/nix/store/*-vim-pack-dir/pack/mnw/start/nvim-treesitter/lua/?.lua"
+    '';
+
     theme = {
       enable = true;
       name = "base16";
@@ -35,7 +40,7 @@
       fidget-nvim.enable = true;
 
       highlight-undo.enable = true;
-      indent-blankline.enable = true;
+      indent-blankline.enable = false; # false while troubleshooting treesitter
     };
 
     treesitter = {
@@ -49,7 +54,7 @@
 
     statusline = {
       lualine = {
-        enable = true;
+        enable = false; # false while troubleshooting treesitter
         theme = "base16";
       };
     };
@@ -160,7 +165,7 @@
 
     ui = {
       borders.enable = true;
-      noice.enable = true;
+      noice.enable = false; # false while troubleshooting treesitter
       colorizer.enable = true;
       illuminate.enable = true;
     };
