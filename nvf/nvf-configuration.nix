@@ -38,6 +38,9 @@
       indent-blankline.enable = true;
     };
 
+    treesitter.enable = true;
+    treesitter.context.enable = true;
+
     statusline = {
       lualine = {
         enable = true;
@@ -161,9 +164,6 @@
     filetree.neo-tree.enable = true; # Filetree
 
     tabline.nvimBufferline.enable = true;
-
-    treesitter.enable = true;
-    treesitter.context.enable = true;
 
     telescope = {
         enable = true;
