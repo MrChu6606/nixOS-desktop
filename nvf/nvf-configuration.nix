@@ -38,15 +38,6 @@
       indent-blankline.enable = true;
     };
 
-    lazy = {
-        enable = true;
-        #Prevent core modules from lazy loading
-        plugins = {
-            nvim-treesitter.enabled = false;
-            plenary-nvim.enabled = false;
-        };
-    };
-
     treesitter = {
         enable = true;
         context.enable = true;
@@ -198,6 +189,15 @@
       undolevels = 10000;
       swapfile = false;
       backup = false;
+    };
+
+    lazy = {
+        enable = true;
+        #Prevent core modules from lazy loading
+        plugins.nvim-treesitter = {
+            enabled = false;
+            package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
+        };
     };
   };
 }
