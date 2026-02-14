@@ -105,7 +105,7 @@
     };
 
 
-    snippets.luasnip.enable = true;
+    snippets.luasnip.enable = false;
 
     filetree.neo-tree.enable = true; # Filetree
 
@@ -148,10 +148,7 @@
       };
     };
 
-    terminal.toggleterm = {
-      enable = true;
-      lazygit.enable = false;
-    };
+    terminal.toggleterm.enable = true;
 
     ui = {
       borders.enable = true;
@@ -167,9 +164,9 @@
 
     options = {
       # 2-space indents
-      tabstop = 2;
-      softtabstop = 2;
-      shiftwidth = 2;
+      tabstop = 4;
+      softtabstop = 4;
+      shiftwidth = 4;
       expandtab = true;
       autoindent = true;
       smartindent = true;
@@ -186,11 +183,5 @@
       backup = false;
     };
 
-    assistant = {
-      chatgpt.enable = false;
-      avante-nvim = {
-        enable = false;
-      };
-    };
   };
 }
