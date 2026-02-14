@@ -137,12 +137,6 @@
 
     # Autocomplete
     autocomplete = {
-      nvim-cmp.enable = true;
-      nvim-cmp.mappings = {
-          confirm = "<CR>";
-          next = "<Tab>";
-          previous = "<S-Tab>";
-      };
       blink-cmp = {
         enable = true;
         friendly-snippets.enable = true;
