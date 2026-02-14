@@ -10,6 +10,7 @@
     wget
     git
     rclone
+    ripgrep
     nnn
     tor-browser
     chromium
@@ -68,6 +69,7 @@
     python3
     lua
     gcc
+    tree-sitter
   ];
 in {
   environment.systemPackages = stable ++ unstable ++ [nvfPkg];
