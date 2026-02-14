@@ -44,9 +44,6 @@
         autotagHtml = true;
         indent.enable = true;
         highlight.enable = true;
-        setupOpts = {
-            ensure_installed = [ "lua" "vim" "vimdoc" "query" ]; #Force install basics
-        };
     };
 
     statusline = {
