@@ -44,6 +44,7 @@
         autotagHtml = true;
         indent.enable = true;
         highlight.enable = true;
+        addDefaultGrammars = true;
     };
 
     statusline = {
@@ -72,83 +73,17 @@
       otter-nvim.enable = true; # actual lsp
     };
 
+#nix, python, java, lua, html, css, sql, bash, markdown, yaml, json 
     languages = {
       enableFormat = true;
       enableTreesitter = true;
       enableExtraDiagnostics = true;
 
-      nix = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-          format.enable = true;
-      };
+      nix.enable = true;
+      lua.enable = true;
+      python.enable = true;
+      java.enable = true;
 
-      python = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-          format.enable = true;
-      };
-
-      java = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-      };
-
-      lua = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-          format.enable = true;
-      };
-
-      html = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-          format.enable = true;
-      };
-
-      css = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-          format.enable = true;
-      };
-
-      sql = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-          format.enable = true;
-      };
-
-      bash = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-          format.enable = true;
-      };
-
-      markdown = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-          format.enable = true;
-      };
-
-      yaml = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-      };
-      json = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-      };
     };
 
     autopairs.nvim-autopairs.enable = true; # Autobrackets
