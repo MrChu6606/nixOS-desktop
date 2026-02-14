@@ -36,7 +36,7 @@
     nvfPkg =
       (nvf.lib.neovimConfiguration {
         pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-        modules = [./modules/nvf-configuration.nix];
+        modules = [./nvf/nvf-configuration.nix];
       }).neovim;
   in {
     # setup nvf and point it to config module
