@@ -40,11 +40,11 @@
 
     treesitter = {
         enable = true;
-        context.enable = true;
-        autotagHtml = true;
-        indent.enable = true;
-        highlight.enable = true;
-        addDefaultGrammars = true;
+    #    context.enable = true;
+    #    autotagHtml = true;
+    #    indent.enable = true;
+    #    highlight.enable = true;
+    #    addDefaultGrammars = true;
     };
 
     statusline = {
@@ -197,6 +197,12 @@
         plugins.nvim-treesitter = {
             enabled = false;
             package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
+        };
+    };
+
+    extraPlugins = with pkgs.vimPlugins; {
+        nvim-treesitter-core = {
+            package = nvim-treesitter;
         };
     };
   };
