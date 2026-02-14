@@ -1,6 +1,6 @@
 final: prev: {
-  flameshot = super.flameshot.overrideAttrs (oldAttrs: rec {
-    nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ super.cmake super.pkgconfig ];
+  flameshot =final.flameshot.overrideAttrs (oldAttrs: rec {
+    nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ final.cmake final.pkgconfig ];
     buildInputs = oldAttrs.buildInputs;
 
     # Add this env var to enable Wayland support
