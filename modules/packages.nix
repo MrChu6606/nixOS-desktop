@@ -68,6 +68,7 @@
     openjdk17
     python3
     lua
+    luajit
     gcc
     tree-sitter
   ];
