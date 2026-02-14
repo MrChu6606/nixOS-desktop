@@ -62,6 +62,7 @@
     #fonts
     noto-fonts-cjk-sans
     corefonts
+    flameshot
   ];
 
   unstable = with unstablePkgs; [
