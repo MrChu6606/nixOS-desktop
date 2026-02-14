@@ -162,6 +162,7 @@
 
     tabline.nvimBufferline.enable = true;
 
+    treesitter.enable = true;
     treesitter.context.enable = true;
 
     telescope = {
