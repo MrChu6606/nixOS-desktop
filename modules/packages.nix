@@ -64,14 +64,9 @@
   ];
 
   unstable = with unstablePkgs; [
-    jdt-language-server
-    checkstyle
     openjdk17
     python3
     lua
-    jdt-language-server
-    stylua
-    luaformatter
     gcc
   ];
 in {

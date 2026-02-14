@@ -6,5 +6,6 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
     nerd-fonts.symbols-only
+    noto-fonts-color-emoji
   ];
 }

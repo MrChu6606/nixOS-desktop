@@ -30,7 +30,9 @@
     visuals = {
       nvim-scrollbar.enable = false;
       nvim-web-devicons.enable = true;
+      cinnamon-nvim.enable = true;
       nvim-cursorline.enable = true;
+      fidget-nvim.enable = true;
 
       highlight-undo.enable = true;
       indent-blankline.enable = true;
@@ -42,9 +44,11 @@
         theme = "base16";
       };
     };
+
     spellcheck = {
       enable = true;
       languages = ["en"];
+      programmingWordlist.enable = true;
     };
 
     clipboard.enable = true;
@@ -53,8 +57,12 @@
     lsp = {
       enable = true;
       formatOnSave = false;
-      inlayHints.enable = true;
+      lspkind.enable = true; # has some opts to show how annotations are shown
+      lightbulb.enable = true;
+      trouble.enable = true;
       nvim-docs-view.enable = true;
+      harper-ls.enable = true; # actual lsp
+      otter-nvim.enable = true; # actual lsp
     };
 
     languages = {
@@ -66,45 +74,26 @@
       markdown.enable = true;
 
       bash.enable = true;
-      go.enable = true;
       lua.enable = true;
-      python = {
-        enable = true;
-        lsp.servers = ["pyright"];
-      };
+      python.enable = true;
       yaml.enable = true;
+      json.enable = true;
       css.enable = true;
-      clang.enable = true; # problems on darwin hopefully not here
       html.enable = true;
-      java = {
-        enable = true;
-        lsp.enable = true;
-      };
+      java.enable = true;
       sql.enable = true;
-      ts.enable = true;
     };
 
     autopairs.nvim-autopairs.enable = true; # Autobrackets
 
     # Autocomplete
     autocomplete = {
+      nvim-cmp.enable = true;
       blink-cmp = {
         enable = true;
         friendly-snippets.enable = true;
         sourcePlugins.emoji.enable = true;
       };
-    };
-
-    filetree.neo-tree.enable = true; # Filetree
-
-    treesitter.context.enable = true;
-
-    telescope.enable = true;
-
-    git = {
-      enable = true;
-      gitsigns.enable = true;
-      neogit.enable = true;
     };
 
     # Debugging code
@@ -115,48 +104,61 @@
       };
     };
 
-    extraPlugins = with pkgs.vimPlugins; {
-      neotest-python = {
-        package = neotest-python;
-      };
-      neotest-java = {
-        package = neotest-java;
-      };
-      neotest-dotnet = {
-        package = neotest-dotnet;
-      };
-      neotest = {
-        package = neotest;
-        setup = ''
-          require("neotest").setup({
-            adapters = {
-              require("neotest-python"),
-              require("neotest-java"),
-              require("neotest-dotnet"),
-            },
-          })
-        '';
-        after = ["neotest-python" "neotest-java" "neotest-dotnet"];
-      };
+
+    snippets.luasnip.enable = true;
+
+    filetree.neo-tree.enable = true; # Filetree
+
+    tabline.nvimBufferline.enable = true;
+
+    treesitter.context.enable = true;
+
+    telescope.enable = true;
+
+    binds = {
+      whichKey.enable = true;
+      cheatsheet.enable = true;
     };
 
-    assistant = {
-      chatgpt.enable = false;
-      avante-nvim = {
-        enable = false;
-      };
+    git = {
+      enable = true;
+      gitsigns.enable = true;
+      neogit.enable = true;
     };
+
+    minimap.codewindow.enable = true;
+
+    dashboard.alpha.enable = true;
+
+    notify.nvim-notify.enable = true;
+
+    projects.project-nvim.enable = true;
 
     utility = {
       diffview-nvim.enable = true;
+      surround.enable = true;
+      multicursors.enable = false;
+      smart-splits.enable = true;
+      undotree.enable = true; # use with :undotree
+      precognition.enable = true; # shows hints for navigation
 
       images = {
         image-nvim.enable = false;
         img-clip.enable = false;
       };
+
+      terminal.toggleterm = {
+        enable = true;
+        lazygit.enable = false;
+      };
     };
 
-    ui.noice.enable = true; # command bar
+    ui = {
+      borders.enable = true;
+      noice.enable = true;
+      colorizer.enable = true;
+      illuminate.enable = true;
+    };
 
     comments.comment-nvim = {
       enable = true;
@@ -182,6 +184,13 @@
       undolevels = 10000;
       swapfile = false;
       backup = false;
+    };
+
+    assistant = {
+      chatgpt.enable = false;
+      avante-nvim = {
+        enable = false;
+      };
     };
   };
 }
