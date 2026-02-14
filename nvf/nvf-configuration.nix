@@ -199,11 +199,5 @@
       swapfile = false;
       backup = false;
     };
-
-    extraPugins = with pkgs.vimPlugins; {
-        treesitter-core = {
-            package = nvim-treesitter.withAllGrammar;
-        };
-    };
   };
 }
