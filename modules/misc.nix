@@ -1,54 +1,68 @@
 {
-  config,
   pkgs,
-  unstablePkgs,
-  lib,
   ...
 }: {
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
+    # Enables flakes and nix shell
+    nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+    # Enables direnv
+    programs.direnv.enable = true;
+    programs.direnv.nix-direnv.enable = true;
 
-  # enables fwupd to flash update bios
-  services.fwupd.enable = true;
+    # Sets kernel to zen kernel
+    boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  # Configure boot menue
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+    # Enables fwupd to flash update bios
+    services.fwupd.enable = true;
 
-  time.timeZone = "America/New_York";
+    # Configure boot menu
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
 
-  services.tailscale.enable = true;
-  programs.steam.enable = true;
+    time.timeZone = "America/New_York";
 
-  # Sets default editor
-  environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
+    services.tailscale.enable = true;
+    programs.steam.enable = true;
 
-  # Sets default browser
-  #  environment.sessionVariables = {
-  #    BROWSER = "librewolf";
-  #  };
-  #  xdg.mime.defaultApplications = {
-  #    "text/html" = ["librewolf.desktop"];
-  #    "x-scheme-handler/http" = ["librewolf.desktop"];
-  #    "x-scheme-handler/https" = ["librewolf.desktop"];
-  #    "x-scheme-handler/about" = ["librewolf.desktop"];
-  #    "x-scheme-handler/unknown" = ["librewolf.desktop"];
-  #  };
+    # Setup automatic garbage collection
+    nix.gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-generations +5";
+    };
 
-  xdg.portal.enable = true;
+    # Setup automatic optimization for de duplication
+    nix.optimise.automatic = true;
+    nix.optimise.dates = [ "weekly" ];
 
-  swapDevices = [
+# Sets default editor
+    environment.variables = {
+        EDITOR = "nvim";
+        VISUAL = "nvim";
+    };
+
+# Sets default browser
+#  environment.sessionVariables = {
+#    BROWSER = "librewolf";
+#  };
+#  xdg.mime.defaultApplications = {
+#    "text/html" = ["librewolf.desktop"];
+#    "x-scheme-handler/http" = ["librewolf.desktop"];
+#    "x-scheme-handler/https" = ["librewolf.desktop"];
+#    "x-scheme-handler/about" = ["librewolf.desktop"];
+#    "x-scheme-handler/unknown" = ["librewolf.desktop"];
+#  };
+
+    xdg.portal.enable = true;
+
+    swapDevices = [
     {
-      device = "/swapfile";
-      size = 8 * 1024;
+        device = "/swapfile";
+        size = 8 * 1024;
     }
-  ];
+    ];
 
-  system.stateVersion = "25.05";
+
+
+    system.stateVersion = "25.05";
 }
