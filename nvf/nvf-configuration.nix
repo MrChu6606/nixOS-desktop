@@ -36,21 +36,21 @@
       fidget-nvim.enable = true;
 
       highlight-undo.enable = true;
-      indent-blankline.enable = false; # false while troubleshooting treesitter
+      indent-blankline.enable = true;
     };
 
     treesitter = {
         enable = true;
-    #    context.enable = true;
-    #    autotagHtml = true;
-    #    indent.enable = true;
-    #    highlight.enable = true;
-    #    addDefaultGrammars = true;
+        context.enable = true;
+        autotagHtml = true;
+        indent.enable = true;
+        highlight.enable = true;
+        addDefaultGrammars = true;
     };
 
     statusline = {
       lualine = {
-        enable = false; # false while troubleshooting treesitter
+        enable = true;
         theme = "base16";
       };
     };
@@ -58,7 +58,6 @@
     spellcheck = {
       enable = true;
       languages = ["en"];
-      programmingWordlist.enable = true;
     };
 
     clipboard.enable = true;
@@ -76,15 +75,21 @@
 
 #nix, python, java, lua, html, css, sql, bash, markdown, yaml, json 
     languages = {
-      enableFormat = true;
-      enableTreesitter = true;
-      enableExtraDiagnostics = true;
-
-      nix.enable = true;
-      lua.enable = true;
-      python.enable = true;
-      java.enable = true;
-
+        enableFormat = true;
+        enableTreesitter = true;
+        enableExtraDiagnostics = true;
+            
+        nix.enable = true;
+        lua.enable = true;
+        python.enable = true;
+        java.enable = true;
+        html.enable = true;
+        css.enable = true;
+        sql.enable = true;
+        bash.enable = true;
+        markdown.enable = true;
+        yaml.enable = true;
+        json.enable = true;
     };
 
     autopairs.nvim-autopairs.enable = true; # Autobrackets
@@ -135,7 +140,7 @@
       neogit.enable = true;
     };
 
-    minimap.codewindow.enable = true;
+    minimap.codewindow.enable = false;
 
     dashboard.alpha.enable = true;
 
@@ -161,7 +166,7 @@
 
     ui = {
       borders.enable = true;
-      noice.enable = false; # false while troubleshooting treesitter
+      noice.enable = true;
       colorizer.enable = true;
       illuminate.enable = true;
     };
@@ -189,7 +194,7 @@
       undofile = true;
       undolevels = 10000;
       swapfile = false;
-      backup = false;
+      backup = true;
     };
 
     lazy.enable = false;
