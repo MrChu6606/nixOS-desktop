@@ -135,6 +135,11 @@
     # Autocomplete
     autocomplete = {
       nvim-cmp.enable = true;
+      nvim-cmp.mapping = {
+          ["<CR>"] = "confirm";      # confirm completion
+          ["<Tab>"] = "next_item";   # next suggestion
+          ["<S-Tab>"] = "prev_item"; # previous suggestion
+      };
       blink-cmp = {
         enable = true;
         friendly-snippets.enable = true;
