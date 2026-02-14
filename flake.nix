@@ -24,6 +24,7 @@
       };
 
       overlays = [
+        (import ./overlays/flameshot.nix)
       ];
     };
 
