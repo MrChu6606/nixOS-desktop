@@ -38,8 +38,16 @@
       indent-blankline.enable = true;
     };
 
-    treesitter.enable = true;
-    treesitter.context.enable = true;
+    treesitter = {
+        enable = true;
+        context.enable = true;
+        autotagHtml = true;
+        indent.enable = true;
+        highlight.enable = true;
+        setupOpts = {
+            ensure_installed = [ "lua" "vim" "vimdoc" "query" ]; #Force install basics
+        };
+    };
 
     statusline = {
       lualine = {
@@ -128,9 +136,25 @@
           format.enable = true;
       };
 
-      markdown.enable = true;
-      yaml.enable = true;
-      json.enable = true;
+      markdown = {
+          enable = true;
+          lsp.enable = true;
+          treesitter.enable = true;
+          format.enable = true;
+      };
+
+      yaml = {
+          enable = true;
+          lsp.enable = true;
+          treesitter.enable = true;
+          format.enable = true;
+      };
+      json = {
+          enable = true;
+          lsp.enable = true;
+          treesitter.enable = true;
+          format.enable = true;
+      };
     };
 
     autopairs.nvim-autopairs.enable = true; # Autobrackets
