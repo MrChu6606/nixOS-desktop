@@ -65,7 +65,6 @@
     lsp = {
       enable = true;
       formatOnSave = false;
-      lspkind.enable = true; # has some opts to show how annotations are shown
       lightbulb.enable = true;
       trouble.enable = true;
       nvim-docs-view.enable = true;
