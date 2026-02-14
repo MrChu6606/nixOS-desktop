@@ -97,7 +97,7 @@
     # Autocomplete
     autocomplete = {
       blink-cmp = {
-        enable = true;
+        enable = false;
         friendly-snippets.enable = true;
         sourcePlugins.emoji.enable = true;
       };
