@@ -4,7 +4,6 @@
   ...
 }: {
   vim = {
-    lsp.set_log_level("debug")
     theme = {
       enable = true;
       name = "base16";
