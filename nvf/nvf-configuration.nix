@@ -38,6 +38,15 @@
       indent-blankline.enable = true;
     };
 
+    lazy = {
+        enable = true;
+        #Prevent core modules from lazy loading
+        plugins = {
+            nvim-treesitter.enabled = false;
+            plenary-nvim.enabled = false;
+        };
+    };
+
     treesitter = {
         enable = true;
         context.enable = true;
@@ -191,5 +200,10 @@
       backup = false;
     };
 
+    extraPugins = with pkgs.vimPlugins; {
+        treesitter-core = {
+            package = nvim-treesitter.withAllGrammar;
+        };
+    };
   };
 }
