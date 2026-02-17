@@ -32,6 +32,7 @@ nupdate-test() {
 #etc
 alias gping='ping -c4 google.com'
 alias ping4='ping -c4'
+alias icat="kitten icat"
 
 #for server
 alias aranov='ssh aranov@100.79.131.10'
