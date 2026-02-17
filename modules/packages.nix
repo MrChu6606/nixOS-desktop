@@ -20,6 +20,7 @@
     streamlink
     fastfetch
     kitty
+    alacritty
     cmatrix
     cbonsai
     gnumake
@@ -64,6 +65,7 @@
     corefonts
     flameshot
     grim
+    imagemagick
   ];
 
   unstable = with unstablePkgs; [
