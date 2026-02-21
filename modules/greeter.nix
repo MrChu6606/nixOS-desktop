@@ -6,12 +6,12 @@
   SilentTheme = silentSDDM;
 
 in {
-  displayManager.sddm = {
+  services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
       
-    #      theme = SilentTheme.pname;
-    #      extraPackages = SilentTheme.propagatedBuildInputs;
+    theme = SilentTheme.pname;
+    extraPackages = SilentTheme.propagatedBuildInputs;
   };
 
     environment.systemPackages = with pkgs; [
