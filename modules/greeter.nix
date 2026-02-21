@@ -11,7 +11,7 @@ in {
     wayland.enable = true;
       
     theme = SilentTheme.pname;
-    extraPackages = SilentTheme.propagatedBuildInputs;
+    extraPackages = [SilentTheme] ++ SilentTheme.propagatedBuildInputs ++ [ pkgs.qt6.qtmultimedia ];
   };
 
     environment.systemPackages = with pkgs; [
