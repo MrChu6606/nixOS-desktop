@@ -13,7 +13,7 @@
     ripgrep
     nnn
     tor-browser
-    chromium
+    firefox 
     qutebrowser
     mpv
     yt-dlp
@@ -60,9 +60,6 @@
     zathura
     #school
     zoom-us
-    #fonts
-    noto-fonts-cjk-sans
-    corefonts
     flameshot
     grim
     imagemagick
