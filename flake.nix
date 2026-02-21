@@ -2,9 +2,13 @@
   description = "My NixOS system flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nvf.url = "github:notashelf/nvf";
+    silentSDDMFlake = {
+            url="github:uiriansan/SilentSDDM";
+            inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -12,6 +16,7 @@
     nixpkgs,
     nixpkgs-unstable,
     nvf,
+    silentSDDMFlake,
     ...
   }: let
     system = "x86_64-linux";
@@ -39,6 +44,8 @@
         pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
         modules = [./nvf/nvf-configuration.nix];
       }).neovim;
+
+    silentSDDM = silentSDDMFlake.packages.${system}.default;
   in {
     # setup nvf and point it to config module
     packages.x86_64-linux.nvf = nvfPkg;
@@ -59,7 +66,7 @@
         ./modules/fonts.nix
         ./modules/shell.nix
         {
-          _module.args = {inherit unstablePkgs nvfPkg;};
+          _module.args = {inherit unstablePkgs nvfPkg silentSDDM;};
         }
       ];
     };

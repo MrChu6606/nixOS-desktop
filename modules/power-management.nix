@@ -4,12 +4,12 @@
   lib,
   ...
 }: {
-  services.logind.extraConfig = ''
+  services.logind.settings.Login = {
     HandleLidSwitch = "suspend";
     HandleLidSwitchExternalPower = "lock";
     HandleLidSwitchDocked = "lock";
-    HandlePowerKey = ignore
-  '';
+    HandlePowerKey = "ignore";
+  };
 
   powerManagement.enable = true;
 

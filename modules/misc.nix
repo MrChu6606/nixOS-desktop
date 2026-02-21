@@ -41,18 +41,6 @@
         VISUAL = "nvim";
     };
 
-# Sets default browser
-#  environment.sessionVariables = {
-#    BROWSER = "librewolf";
-#  };
-#  xdg.mime.defaultApplications = {
-#    "text/html" = ["librewolf.desktop"];
-#    "x-scheme-handler/http" = ["librewolf.desktop"];
-#    "x-scheme-handler/https" = ["librewolf.desktop"];
-#    "x-scheme-handler/about" = ["librewolf.desktop"];
-#    "x-scheme-handler/unknown" = ["librewolf.desktop"];
-#  };
-
     xdg.portal.enable = true;
 
     swapDevices = [
@@ -61,8 +49,6 @@
         size = 8 * 1024;
     }
     ];
-
-
 
     system.stateVersion = "25.05";
 }

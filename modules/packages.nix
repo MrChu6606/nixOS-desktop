@@ -66,6 +66,8 @@
     flameshot
     grim
     imagemagick
+    qalculate-qt
+    fd
   ];
 
   unstable = with unstablePkgs; [

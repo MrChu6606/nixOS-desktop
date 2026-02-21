@@ -1,46 +1,21 @@
 {
-  config,
   pkgs,
-  lib,
+  silentSDDM,
   ...
-}: {
-  services.xserver = {
-    enable = true;
+}: let
+  SilentTheme = silentSDDM;
 
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-    };
+in {
+  displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+      
+    #      theme = SilentTheme.pname;
+    #      extraPackages = SilentTheme.propagatedBuildInputs;
   };
 
-  # set wallpaper
-  environment.etc."gdm-wallpaper.jpg".source = ../Wallpapers/red-forest.jpg;
-
-  programs.dconf.profiles.gdm.databases = [
-    {
-      settings = {
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-          cursor-theme = "Numix-Cursor";
-          icon-theme = "Papirus-Dark";
-          font-name = "Cantarell 11";
-        };
-
-        "org/gnome/desktop/background" = {
-          picture-uri = "files://etc/gdm-wallpaper.jpg";
-          picture-uri-dark = "files://etc/gdm-wallpaper.jpg";
-        };
-
-        "org/gnome/login-screen" = {
-          disable-user-list = true;
-        };
-      };
-    }
-  ];
-
-  environment.systemPackages = with pkgs; [
-    papirus-icon-theme
-    adwaita-icon-theme
-    gnome-themes-extra
+    environment.systemPackages = with pkgs; [
+    silentSDDM
+    silentSDDM.test
   ];
 }
