@@ -45,7 +45,7 @@
         modules = [./nvf/nvf-configuration.nix];
       }).neovim;
 
-    silentSDDM = silentSDDMFlake.packages.${system}.default;
+    silentSDDM = silentSDDMFlake.nixosModules.default;
   in {
     # setup nvf and point it to config module
     packages.x86_64-linux.nvf = nvfPkg;
