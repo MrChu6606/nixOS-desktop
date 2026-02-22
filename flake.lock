@@ -150,10 +150,10 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvf": "nvf",
-        "silentSDDMFlake": "silentSDDMFlake"
+        "silentSDDM": "silentSDDM"
       }
     },
-    "silentSDDMFlake": {
+    "silentSDDM": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
