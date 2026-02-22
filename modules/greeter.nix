@@ -10,5 +10,8 @@
     programs.silentSDDM = {
         enable = true;
         theme = "default";
+        settings = {
+            Background = { Mode = "cover"; };
+        };
     };
 }
