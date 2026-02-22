@@ -5,18 +5,18 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nvf.url = "github:notashelf/nvf";
-    silentSDDMFlake = {
+    silentSDDM = {
             url="github:uiriansan/SilentSDDM";
             inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {
+  outputs = inputs@{
     self,
     nixpkgs,
     nixpkgs-unstable,
     nvf,
-    silentSDDMFlake,
+    silentSDDM,
     ...
   }: let
     system = "x86_64-linux";
@@ -45,13 +45,15 @@
         modules = [./nvf/nvf-configuration.nix];
       }).neovim;
 
-    silentSDDM = silentSDDMFlake.nixosModules.default;
+    #silentSDDM = silentSDDMFlake.packages.${system}.default;
   in {
     # setup nvf and point it to config module
     packages.x86_64-linux.nvf = nvfPkg;
 
     nixosConfigurations.lotus = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
+
+      specialArgs = { inherit inputs; };
 
       modules = [
         ./modules/hardware.nix
@@ -66,7 +68,7 @@
         ./modules/fonts.nix
         ./modules/shell.nix
         {
-          _module.args = {inherit unstablePkgs nvfPkg silentSDDM;};
+          _module.args = {inherit unstablePkgs nvfPkg;};
         }
       ];
     };
