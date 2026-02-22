@@ -12,6 +12,7 @@
         theme = "default";
         settings = {
             Background = { Mode = "cover"; };
+            General = { GreeterEnvironment = "QT_SCALE_FACTOR=1"; };
         };
     };
 }
