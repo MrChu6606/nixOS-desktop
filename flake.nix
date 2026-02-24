@@ -30,6 +30,7 @@
 
       overlays = [
         (import ./overlays/flameshot.nix)
+        (import ./overlays/qutebrowser.nix)
       ];
     };
 

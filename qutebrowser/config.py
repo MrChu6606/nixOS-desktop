@@ -44,7 +44,6 @@ c.aliases["no3rd"] = (
 )
 
 # External player for YouTube
-# doesnt quite work
 config.bind("Y", 'spawn mpv "{url}" best')
 
 # External player for Live Streams
@@ -100,8 +99,7 @@ c.colors.completion.category.border.top = bg
 c.colors.completion.category.border.bottom = bg
 
 # Dark mode for webpages
-c.colors.webpage.darkmode.enabled = False
-c.colors.webpage.darkmode.policy.images = "smart"
+c.colors.webpage.preferred_color_scheme = "dark"
 
 # Fonts
 c.fonts.default_family = ["Fira Code", "Monospace"]
