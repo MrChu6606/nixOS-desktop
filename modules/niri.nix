@@ -5,5 +5,5 @@
   ...
 }: {
   # what goes here
-  niri.enable = true;
+  programs.niri.enable = true;
 }

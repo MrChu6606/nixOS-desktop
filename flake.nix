@@ -68,6 +68,7 @@
         ./modules/greeter.nix
         ./modules/fonts.nix
         ./modules/shell.nix
+        ./modules/niri.nix
         {
           _module.args = {inherit unstablePkgs nvfPkg;};
         }
