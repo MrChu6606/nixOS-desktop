@@ -19,7 +19,7 @@ To prevent "Missing Type" errors (e.g., String cannot be resolved) and ensure th
 
 #### JSON
 
-{
+> {
     "java.jdt.ls.java.home": "${workspaceFolder}/.jdk",
     "java.configuration.runtimes": [
         {
