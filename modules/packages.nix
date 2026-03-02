@@ -65,6 +65,11 @@
     imagemagick
     qalculate-qt
     fd
+    # blu ray stuff
+    vlc
+    libbluray
+    libaacs
+    makemkv
   ];
 
   unstable = with unstablePkgs; [
