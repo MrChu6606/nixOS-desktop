@@ -68,7 +68,6 @@
     # blu ray stuff
     vlc
     libbluray
-    libaacs
     makemkv
   ];
 
@@ -79,6 +78,7 @@
     luajit
     gcc
     tree-sitter
+    libaacs
   ];
 in {
   environment.systemPackages = stable ++ unstable ++ [nvfPkg];
