@@ -13,12 +13,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# export nnn variables
-source $HOME/nixOS-desktop/nnn/config.sh
-export NNN_PLUG="$HOME/nixOS-desktop/nnn/plugins"
-export NNN_TERMINAL=kitty
-export NNN_FIFO=/tmp/nnn.fifo
-
 # enable pure
 autoload -U promptinit; promptinit
 autoload -U prompt pure

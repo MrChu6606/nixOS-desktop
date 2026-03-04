@@ -9,7 +9,6 @@
 
     interactiveShellInit = ''
       source $HOME/nixOS-desktop/shell/aliases.sh
-      source $HOME/nixOS-desktop/nnn/config.sh
     '';
 
     promptInit = ''
