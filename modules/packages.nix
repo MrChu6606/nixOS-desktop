@@ -11,7 +11,6 @@
     git
     rclone
     ripgrep
-    nnn
     tor-browser
     firefox 
     qutebrowser
@@ -19,7 +18,6 @@
     yt-dlp
     streamlink
     fastfetch
-    kitty
     alacritty
     cmatrix
     cbonsai
@@ -45,10 +43,6 @@
     pavucontrol
     brightnessctl
     vesktop
-    #nnn dependencies
-    fzf
-    gnupg
-    whois
     ffmpeg
     xdg-utils
     localsend
@@ -79,6 +73,7 @@
     gcc
     tree-sitter
     libaacs
+    yazi
   ];
 in {
   environment.systemPackages = stable ++ unstable ++ [nvfPkg];
