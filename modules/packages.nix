@@ -29,6 +29,7 @@
     numix-cursor-theme
     exiftool
     dunst
+    noctalia-shell
     evtest
     tealdeer
     btop

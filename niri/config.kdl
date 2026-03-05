@@ -18,7 +18,6 @@ input {
             options "caps:swapescape"
 
             // If this section is empty, niri will fetch xkb settings
-      source $HOME/nixOS-desktop/nnn/config.sh
             // from org.freedesktop.locale1. You can control these using
             // localectl set-x11-keymap.
         }
@@ -68,7 +67,9 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="0%"
+
+    disable-power-key-handling
 }
 
 // You can configure outputs by their name, which you can find
@@ -169,7 +170,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        active-color "#d97742"
 
         // Color of the ring on inactive monitors.
         //
@@ -364,9 +365,10 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+R hotkey-overlay-title="Run an Application: wofi" { spawn-sh "wofi --show drun"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+Q hotkey-overlay-title="Open browser: qutebrowser" { spawn "qutebrowser"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -396,7 +398,8 @@ binds {
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     //Power menu
-    XF86PowerOff { spawn-sh $HOME/nixOS-desktop/shell/scripts/powermenu.sh }
+    // it doesnt seem you configure the button here
+    //XF86PowerOff { spawn "$HOME/nixOS-desktop/shell/scripts/powermenu.sh"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
