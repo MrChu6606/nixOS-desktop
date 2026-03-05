@@ -29,7 +29,6 @@
     numix-cursor-theme
     exiftool
     dunst
-    noctalia-shell
     evtest
     tealdeer
     btop
@@ -75,6 +74,7 @@
     tree-sitter
     libaacs
     yazi
+    noctalia-shell
   ];
 in {
   environment.systemPackages = stable ++ unstable ++ [nvfPkg];
