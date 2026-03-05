@@ -20,7 +20,7 @@ Reboot)
   ;;
 Lock)
   sleep 0.1
-  bash $HOME/nixOS-desktop/hypr/scripts/lock.sh
+  bash $HOME/nixOS-desktop/shell/scripts/lock.sh
   ;;
 Logout)
   hyprctl dispatch exit
