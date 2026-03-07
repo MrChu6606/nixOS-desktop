@@ -17,6 +17,7 @@
     mpv
     yt-dlp
     streamlink
+    usbutils
     fastfetch
     alacritty
     cmatrix
