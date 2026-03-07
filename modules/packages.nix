@@ -63,6 +63,9 @@
     # blu ray stuff
     vlc
     libbluray
+    libdvdcss
+    libdvdread
+    libdvdnav
     makemkv
   ];
 
