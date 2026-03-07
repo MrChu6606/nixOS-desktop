@@ -12,6 +12,10 @@
     # Sets kernel to zen kernel
     boot.kernelPackages = pkgs.linuxPackages_zen;
 
+    #pls dont break things
+    # enables scsi driver for disk drive stuff
+    boot.kernelModules = ["sg"];
+
     # Enables fwupd to flash update bios
     services.fwupd.enable = true;
 
