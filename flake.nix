@@ -9,6 +9,7 @@
             url="github:uiriansan/SilentSDDM";
             inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
   outputs = inputs@{
@@ -17,6 +18,7 @@
     nixpkgs-unstable,
     nvf,
     silentSDDM,
+    nix-flatpak,
     ...
   }: let
     system = "x86_64-linux";
@@ -69,6 +71,7 @@
         ./modules/fonts.nix
         ./modules/shell.nix
         ./modules/niri.nix
+        nix-flatpak.nixosModules.nix-flatpak
         {
           _module.args = {inherit unstablePkgs nvfPkg;};
         }
