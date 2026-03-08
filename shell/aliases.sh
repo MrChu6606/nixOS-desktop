@@ -1,5 +1,7 @@
 # nix helpers
 alias nr='sudo nixos-rebuild switch --flake $HOME/nixOS-desktop\#lotus'
+alias nt='sudo nixos-rebuild switch --flake $HOME/nixOS-desktop\#lotus --dry-run'
+
 alias ec='nvim $HOME/nixOS-desktop/flake.nix'
 alias apt='cd $HOME/nixOS-desktop/modules/ && nvim packages.nix'
 

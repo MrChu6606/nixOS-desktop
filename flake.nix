@@ -43,7 +43,7 @@
     nvfPkg =
       (nvf.lib.neovimConfiguration {
         pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-        modules = [./nvf/nvf-configuration.nix];
+        modules = [./modules/nvf-configuration.nix];
       }).neovim;
 
     #silentSDDM = silentSDDMFlake.packages.${system}.default;
