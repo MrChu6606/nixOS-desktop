@@ -8,7 +8,7 @@
     nerd-fonts.symbols-only
     noto-fonts-color-emoji
     papirus-icon-theme
-    adawaita-icon-theme
+    adwaita-icon-theme
     noto-fonts-cjk-sans
     corefonts
   ];
