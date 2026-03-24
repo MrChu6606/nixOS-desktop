@@ -151,11 +151,6 @@
                     "id": "plugin:update-count"
                 },
                 {
-                    "icon": "rocket",
-                    "iconColor": "none",
-                    "id": "Launcher"
-                },
-                {
                     "defaultSettings": {
                         "hideBackground": false,
                         "minimumThreshold": 10
@@ -215,15 +210,6 @@
                     "id": "Battery",
                     "showNoctaliaPerformance": false,
                     "showPowerProfiles": false
-                },
-                {
-                    "colorizeDistroLogo": false,
-                    "colorizeSystemIcon": "none",
-                    "customIconPath": "",
-                    "enableColorization": false,
-                    "icon": "noctalia",
-                    "id": "ControlCenter",
-                    "useDistroLogo": false
                 }
             ]
         }
@@ -376,12 +362,12 @@
         "forceBlackScreenCorners": false,
         "iRadiusRatio": 1,
         "keybinds": {
-            "keyDown": "J",
+            "keyDown": "Down",
             "keyEnter": "Return",
             "keyEscape": "Esc",
-            "keyLeft": "H",
-            "keyRight": "L",
-            "keyUp": "K"
+            "keyLeft": "Left",
+            "keyRight": "Right",
+            "keyUp": "Up"
         },
         "language": "",
         "lockOnSuspend": true,

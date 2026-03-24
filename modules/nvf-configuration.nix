@@ -199,5 +199,6 @@
 
     lazy.enable = false;
 
+    vim.extraLuaFiles = [ ../nvf/filetypes.lua ];
   };
 }
