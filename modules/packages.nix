@@ -67,6 +67,9 @@
     libdvdread
     libdvdnav
     makemkv
+    # games
+    viteris
+    moon-buggy
   ];
 
   unstable = with unstablePkgs; [
