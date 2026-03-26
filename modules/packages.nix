@@ -68,7 +68,7 @@
     libdvdnav
     makemkv
     # games
-    viteris
+    vitetris
     moon-buggy
   ];
 
