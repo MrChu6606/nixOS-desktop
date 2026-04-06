@@ -10,6 +10,10 @@
             inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{
@@ -17,7 +21,7 @@
     nixpkgs,
     nixpkgs-unstable,
     nvf,
-    silentSDDM,
+    zen-browser,
     nix-flatpak,
     ...
   }: let
@@ -49,10 +53,17 @@
         modules = [./modules/nvf-configuration.nix];
       }).neovim;
 
+    # Here I extract the package and pass that as an input to packages.nix
+    zenPkg = zen-browser.packages.${system}.default;
+
+    # Here instead of doing that i import sddm from inputs directly in greeter.nix
     #silentSDDM = silentSDDMFlake.packages.${system}.default;
   in {
-    # setup nvf and point it to config module
-    packages.x86_64-linux.nvf = nvfPkg;
+    # I think this line adds the packages to my system
+    packages.${system} = {
+      nvf = nvfPkg;
+      zen = zenPkg;
+    };
 
     nixosConfigurations.lotus = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
@@ -74,7 +85,7 @@
         ./modules/niri.nix
         nix-flatpak.nixosModules.nix-flatpak
         {
-          _module.args = {inherit unstablePkgs nvfPkg;};
+          _module.args = {inherit unstablePkgs nvfPkg zenPkg;};
         }
       ];
     };

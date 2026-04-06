@@ -1,9 +1,8 @@
 {
-  config,
   pkgs,
   unstablePkgs,
   nvfPkg,
-  lib,
+  zenPkg,
   ...
 }: let
   stable = with pkgs; [
@@ -12,7 +11,6 @@
     rclone
     ripgrep
     tor-browser
-    firefox 
     qutebrowser
     mpv
     yt-dlp
@@ -84,7 +82,7 @@
     noctalia-shell
   ];
 in {
-  environment.systemPackages = stable ++ unstable ++ [nvfPkg];
+  environment.systemPackages = stable ++ unstable ++ [nvfPkg zenPkg];
 
   services.flatpak = {
     enable = true;
