@@ -569,6 +569,10 @@
             {
                 "enabled": true,
                 "id": "gtk"
+            },
+            {
+                "enabled": true,
+                "id": "zenBrowser"
             }
         ],
         "enableUserTheming": false
@@ -604,7 +608,7 @@
         "panelPosition": "follow_bar",
         "randomIntervalSec": 300,
         "setWallpaperOnAllMonitors": true,
-        "showHiddenFiles": true,
+        "showHiddenFiles": false,
         "solidColor": "#1a1a2e",
         "sortOrder": "name",
         "transitionDuration": 1500,
