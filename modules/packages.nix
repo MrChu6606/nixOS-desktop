@@ -23,7 +23,6 @@
     gnumake
     curl
     pastel
-    wireshark
     imv
     numix-cursor-theme
     exiftool
