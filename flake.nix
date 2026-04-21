@@ -61,7 +61,7 @@
 
     # Search modules directory and add .nix files to a list called mods
     lib = nixpkgs.lib;
-    loadModules = import ./lib/loadModules.nix { inherit lib; };
+    loadModules = import ./lib/load-modules.nix { inherit lib; };
     mods = loadModules ./modules;
 
 
