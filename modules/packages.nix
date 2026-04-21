@@ -29,6 +29,7 @@
     dunst
     evtest
     tealdeer
+    tree
     wireshark
     btop
     zathura
