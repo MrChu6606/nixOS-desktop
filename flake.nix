@@ -58,6 +58,13 @@
 
     # Here instead of doing that i import sddm from inputs directly in greeter.nix
     #silentSDDM = silentSDDMFlake.packages.${system}.default;
+
+    # Search modules directory and add .nix files to a list called mods
+    lib = nixpkgs.lib;
+    loadModules = import ./lib/loadModules.nix { inherit lib; };
+    mods = loadModules ./modules;
+
+
   in {
     # I think this line adds the packages to my system
     packages.${system} = {
@@ -70,19 +77,7 @@
 
       specialArgs = { inherit inputs; };
 
-      modules = [
-        ./modules/hardware.nix
-        ./modules/misc.nix
-        ./modules/users.nix
-        ./modules/packages.nix
-        ./modules/power-management.nix
-        ./modules/networking.nix
-        ./modules/bluetooth.nix
-        ./modules/hypr.nix
-        ./modules/greeter.nix
-        ./modules/fonts.nix
-        ./modules/shell.nix
-        ./modules/niri.nix
+      modules = mods ++ [
         nix-flatpak.nixosModules.nix-flatpak
         {
           _module.args = {inherit unstablePkgs nvfPkg zenPkg;};
