@@ -42,6 +42,7 @@
     wl-clipboard
     pavucontrol
     brightnessctl
+    kanshi
     vesktop
     ffmpeg
     xdg-utils
