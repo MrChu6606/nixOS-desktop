@@ -50,7 +50,7 @@
     nvfPkg =
       (nvf.lib.neovimConfiguration {
         pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-        modules = [./modules/nvf-configuration.nix];
+        modules = [./nvf/nvf-configuration.nix];
       }).neovim;
 
     # Here I extract the package and pass that as an input to packages.nix
@@ -61,7 +61,7 @@
 
     # Search modules directory and add .nix files to a list called mods
     lib = nixpkgs.lib;
-    loadModules = import ./lib/load-modules.nix { inherit lib; };
+    loadModules = import ./.lib/load-modules.nix { inherit lib; };
     mods = loadModules ./modules;
 
 
