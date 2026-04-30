@@ -73,7 +73,7 @@
       otter-nvim.enable = true; # actual lsp
     };
 
-  #nix, python, java, lua, typescript, html, css, 
+  #nix, python, java, lua, javascript, html, css, 
   #sql, bash, markdown, yaml, json 
     languages = {
         enableFormat = true;
@@ -84,7 +84,7 @@
         lua.enable = true;
         python.enable = true;
         java.enable = true;
-        typescript.enable = true;
+        javascript.enable = true;
         html.enable = true;
         css.enable = true;
         sql.enable = true;
