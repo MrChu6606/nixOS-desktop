@@ -378,6 +378,7 @@ binds {
 
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+Q hotkey-overlay-title="Open browser: qutebrowser" { spawn "qutebrowser"; }
+    Mod+P hotkey-overlay-title="Open browser: Zen" { spawn "zen"; }
     Mod+E hotkey-overlay-title="Open file manager: Yazi" { spawn-sh "alacritty -e yazi"; }
 
     // Core Noctalia binds
