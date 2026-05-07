@@ -1,4 +1,4 @@
-# nixos-desktop
+# nixOS-desktop
 
 A modular, flake-based NixOS desktop configuration focused on reproducibility, Wayland, and clean system organization.
 
