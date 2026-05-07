@@ -33,5 +33,5 @@
     clean.enable = true;
 
     flake = "$HOME/nixOS-desktop/";
-  }
+  };
 }
