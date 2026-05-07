@@ -32,6 +32,7 @@
     enable = true;
     clean.enable = true;
 
-    flake = "${builtins.getEnv "HOME"}/nixOS-desktop/";
+    # This doesnt seem to work right now
+    flake = "/home/nic/nixOS-desktop/";
   };
 }
