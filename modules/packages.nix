@@ -60,13 +60,6 @@
     imagemagick
     qalculate-qt
     fd
-    # blu ray stuff
-    vlc
-    libbluray
-    libdvdcss
-    libdvdread
-    libdvdnav
-    makemkv
     # games
     vitetris
     moon-buggy
@@ -79,7 +72,6 @@
     luajit
     gcc
     tree-sitter
-    libaacs
     yazi
     noctalia-shell
   ];
