@@ -211,5 +211,6 @@ Stable nixpkgs is used for the main system while unstable packages are selective
 * Shared module library
 * Public reusable dev flakes
 * Host profiles for additional machines
-* Integrating my NixOS server into this flake instead of maintaining a separate repository
+* Setting up a host for a pi on and ARM cpu
+
 

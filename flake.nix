@@ -17,15 +17,26 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixflix = {
+            url = "github:kiriwalawren/nixflix";
+            inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+        url = "github:Mic92/sops-nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{
-    self,
     nixpkgs,
     nixpkgs-unstable,
     nvf,
     zen-browser,
     nix-flatpak,
+    nixflix,
+    sops-nix,
     ...
   }: let
     system = "x86_64-linux";
@@ -98,6 +109,8 @@
 
         modules = sharedMods ++ [
           ./modules/server
+          nixflix.nixosModules.default
+          sops-nix.nixosModules.default
           {
             _module.args = {inherit unstablePkgs nvfPkg;};
           }

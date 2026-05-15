@@ -7,6 +7,8 @@
     neovim
     yazi
     wl-clipboard
+    sops
+    age
   ];
 in {
   environment.systemPackages = stable;
