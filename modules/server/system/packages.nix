@@ -1,4 +1,4 @@
-{ pkgs, ... }: let
+{ pkgs, nvfFN, ... }: let
   stable = with pkgs; [
     wget
     git
@@ -10,6 +10,7 @@
     sops
     age
   ];
+  nvf = nvfFN pkgs.unstable;
 in {
-  environment.systemPackages = stable;
+  environment.systemPackages = stable ++ [ nvf ];
 }

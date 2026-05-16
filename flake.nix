@@ -40,17 +40,11 @@
     sops-nix,
     ...
   }: let
-    system = "x86_64-linux";
 
-    # unstable nixpkgs
-    unstablePkgs = import nixpkgs-unstable {
-      inherit system;
-    };
-
-    # pass nvf as part of the system packages
+    # a function for creating nvf
     nvfFN = systemPkgs: 
       (nvf.lib.neovimConfiguration {
-        pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
+        pkgs = systemPkgs;
         modules = [./nvf/nvf-configuration.nix];
       }).neovim;
 
@@ -75,8 +69,8 @@
           silentSDDM.nixosModules.default
         ];
         extraSpecialArgs = { 
-          inherit unstablePkgs nvfFN;
-          zenPkg = zen-browser.packages.${system}.default;
+          inherit nvfFN;
+          zenPkg = zen-browser.packages."x86_64-linux".default;
         };
       };
 
@@ -88,7 +82,19 @@
           nixflix.nixosModules.default
           sops-nix.nixosModules.default
         ];
-        extraSpecialArgs = { inherit unstablePkgs nvfFN; };
+        overlays = [
+          (import ./overlays/unstable.nix { inherit nixpkgs-unstable; } )
+        ];
+        extraSpecialArgs = { inherit nvfFN; };
+      };
+
+      juniper = mkHost {
+        system = "aarch64-linux";
+        modules = [
+          ./modules/shared
+          ./modules/pi
+        ];
+        extraSpecialArgs = { inherit nvfFN; };
       };
     };
   };
