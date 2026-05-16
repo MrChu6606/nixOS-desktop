@@ -49,7 +49,7 @@
       }).neovim;
 
 
-    mkHost = import ./.lib/mkHost.nix { inherit nixpkgs; };
+    mkHost = import ./lib/mkHost.nix { inherit nixpkgs; };
 
   in {
     nixosConfigurations = {

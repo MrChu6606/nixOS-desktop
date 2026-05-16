@@ -1,31 +1,26 @@
-# nixOS-desktop
+# nix-fleet
 
-A modular, flake-based NixOS desktop configuration focused on reproducibility, Wayland, and clean system organization.
+A modular, flake-based NixOS configuration focused on reproducibility, multi-host management, and a clean system architecture using a custom `mkHost` builder.
 
-This repository contains my full personal NixOS setup, including:
-
-* A modular NixOS configuration
-* Custom overlays
-* Reproducible development environments
-* A Wayland desktop built on Niri
-* A custom theming ecosystem
-* A flake-based Neovim setup using NVF
+This repository manages multiple machines (laptop, server, and Raspberry Pi) from a single unified flake with consistent package handling, overlays, and system composition.
 
 ---
 
 # Features
 
-* Fully declarative NixOS configuration
-* Automatically loaded module system
-* Wayland-first desktop using Niri
-* Reusable development flakes
-* Stable + unstable nixpkgs integration
-* Custom overlays and package tweaks
-* Flake-based Neovim configuration via NVF
-* Zen Browser + Qutebrowser setup
-* Multi-monitor support with Kanshi
-* Zsh environment with custom aliases
-* Managed with `nh`
+* Fully modular NixOS system architecture
+* Custom `mkHost` abstraction for all hosts
+* Multi-host support (x86_64 + aarch64/ARM64)
+* Stable + optional unstable package integration via overlay
+* Automatic module loading system
+* Unified pkgs model (single universe per system)
+* Wayland-first desktop (Niri)
+* NVF-based Neovim configuration
+* Zen Browser integration
+* Flatpak support via nix-flatpak
+* Clean separation between system, host, and modules
+* Extensible overlay system
+* Reproducible development environments via flake dev shells
 
 ---
 
@@ -33,184 +28,287 @@ This repository contains my full personal NixOS setup, including:
 
 ```text
 .
-├── flake.nix                # Main flake entry point
-├── modules/                 # System modules (autoloaded)
-├── overlays/                # Package overrides
-├── nixos/                   # Legacy/base NixOS configs
-├── niri/                    # Niri compositor config
-├── kanshi/                  # Monitor layout rules
-├── alacritty/               # Terminal config + themes
-├── qutebrowser/             # Browser configuration
-├── nvf/                     # Neovim flake configuration
-├── shell/                   # Zsh config and aliases
-├── devFlakes/               # Reproducible development environments
-├── noctalia/                # Theming ecosystem + plugins
-├── Wallpapers/              # Wallpaper collection
-└── .lib/                    # Internal helper utilities
+├── flake.nix              # Entry point (hosts + inputs + overlays)
+├── lib/
+│   ├── mkHost.nix        # Core system builder abstraction
+│   └── load-modules.nix  # Automatic module loader
+│
+├── modules/
+│   ├── shared/           # Shared system configuration
+│   ├── laptop/           # Laptop-specific modules
+│   ├── server/           # Server configuration
+│   └── pi/               # ARM/Raspberry Pi configuration
+│
+├── overlays/             # System overlays (steam, qutebrowser, etc.)
+│
+├── nvf/                  # Neovim configuration (NVF-based)
+│
+├── devFlakes/            # Reproducible dev environments
+│
+└── other configs/
+    ├── niri/
+    ├── kanshi/
+    ├── noctalia/
+    ├── shell/
+    └── wallpapers/
 ```
 
 ---
 
-# Flake Architecture
+# Architecture Overview
 
-The system uses:
+This system is built around a strict separation of concerns:
 
-* `nixos-25.11` as the primary stable channel
-* `nixos-unstable` for selectively newer packages
-* A modular configuration loader for automatic module discovery
+## 1. flake.nix — composition layer
 
-The `.lib/load-modules.nix` helper recursively loads all `.nix` files from `modules/`, avoiding large manual import lists and making the configuration easier to scale.
+Defines:
 
-## Inputs
+* inputs (nixpkgs, unstable, nvf, etc.)
+* overlays
+* host declarations via `mkHost`
 
-Current flake inputs include:
-
-* NVF
-* Zen Browser
-* nix-flatpak
-* SilentSDDM
-* stable + unstable nixpkgs
+It does NOT directly configure the system.
 
 ---
 
-# Module System
+## 2. mkHost — system builder
 
-The `modules/` directory separates concerns into isolated components.
+`mkHost` is the single entry point for building any machine.
 
-Examples:
+It is responsible for:
 
-* `boot.nix` — bootloader configuration
-* `networking.nix` — networking stack
-* `niri.nix` — Wayland compositor setup
-* `packages.nix` — installed software
-* `shell.nix` — shell environment
-* `power-management.nix` — battery and power tuning
-* `greeter.nix` — SDDM/login manager
-* `kairo.nix` — application-specific configuration
+* Creating the system `pkgs`
+* Applying overlays
+* Injecting shared modules
+* Passing system-wide special arguments
+* Ensuring consistency across architectures
 
-Modules are automatically discovered and loaded through:
+All hosts (laptop, server, pi) go through this function.
+
+---
+
+## 3. modules — system behavior
+
+Modules define actual system configuration:
+
+* boot configuration
+* networking
+* desktop environment
+* packages
+* services
+* hardware-specific tweaks
+
+Modules are automatically loaded using:
 
 ```nix
-loadModules ./modules
+loadModules ./modules/<host>
 ```
 
-This keeps the flake clean while making it easy to add or remove modules.
+---
+
+## 4. overlays — package modifications
+
+Overlays are used for:
+
+* custom package tweaks
+* patched applications
+* enabling unstable package namespace (`pkgs.unstable`)
+* system-wide package adjustments
+
+No separate unstable nixpkgs instance is used — unstable is exposed via overlay namespace.
+
+---
+
+# Host System
+
+Each machine is defined declaratively via `mkHost`.
+
+## Example: Laptop
+
+```nix
+lotus = mkHost {
+  system = "x86_64-linux";
+
+  overlays = [
+    unstableOverlay
+  ];
+
+  modules = [
+    ./modules/laptop
+  ];
+};
+```
+
+---
+
+## Example: Server
+
+```nix
+sequoia = mkHost {
+  system = "x86_64-linux";
+
+  overlays = [
+  ];
+
+  modules = [
+    ./modules/server
+  ];
+};
+```
+
+---
+
+## Example: Raspberry Pi (ARM64)
+
+```nix
+pi = mkHost {
+  system = "aarch64-linux";
+
+  overlays = [
+    unstableOverlay
+  ];
+
+  modules = [
+    ./modules/pi
+  ];
+};
+```
+
+---
+
+# Package Model
+
+This system uses a **single pkgs universe per system architecture**.
+
+Instead of separate nixpkgs instances:
+
+* `pkgs` → stable base system
+* `pkgs.unstable` → optional unstable channel (via overlay)
+
+Example usage:
+
+```nix
+environment.systemPackages = with pkgs; [
+  git
+  curl
+
+  unstable.neovim
+  unstable.python3
+];
+```
+
+---
+
+# NVF (Neovim)
+
+NVF is built as a system package derived from the active pkgs universe:
+
+* No separate nixpkgs instance
+* Inherits system architecture automatically
+* Can optionally use `pkgs.unstable`
+
+This ensures consistent plugin and dependency versions across the system.
 
 ---
 
 # Desktop Environment
 
-This system is built around:
+Laptop configuration is built around:
 
-* **Niri** as the compositor/window manager
-* **Alacritty** as the terminal
-* **Qutebrowser** and **Zen Browser**
-* A Wayland-native workflow
+* **Niri** (Wayland compositor)
+* **Alacritty** terminal
+* **Zen Browser**
+* **Qutebrowser**
+* Kanshi for display management
 
-The setup is keyboard-focused and optimized for tiling workflows.
+The environment is optimized for a keyboard-driven workflow.
 
 ---
 
-# Noctalia
+# Server Configuration
 
-`noctalia/` is a theming ecosystem containing:
+The server setup is minimal and service-oriented:
 
-* Color palettes
-* Templates
-* QML plugins/widgets
-* Desktop UI bar
+* AdGuard Home / DNS tooling
+* Media / automation services
+* SSH-first administration model
+* No GUI dependencies unless explicitly required
 
-It acts as a centralized styling layer for the desktop.
+---
+
+# Raspberry Pi (ARM64)
+
+The Pi is treated as a first-class host:
+
+* Uses `aarch64-linux` system target
+* Shares same module system as other hosts
+* No special pkgs universe required
+* Fully integrated into mkHost workflow
 
 ---
 
 # Development Environments
 
-The `devFlakes/` directory contains isolated development environments.
-
-Current examples:
-
-* Java
-* Python data analysis
-
-Each environment is independently reproducible using:
+Each environment is isolated in `devFlakes/`:
 
 ```bash
-nix develop ./devFlakes/<environment>
+nix develop ./devFlakes/python
 ```
 
-Some development flakes are symlinked to active project directories for easier maintenance.
-
----
-
-# Overlays
-
-Custom overlays are used for:
-
-* Steam tweaks
-* Flameshot modifications
-* Qutebrowser packaging changes
-
-Defined in:
-
-```text
-overlays/
-```
-
-and injected into the system package set during flake evaluation.
-
----
-
-# Usage
-
-## Rebuild the system
-
-```bash
-nh os switch
-```
-
-## Update flake inputs
-
-```bash
-nh os switch --update
-```
-
-## Enter a development shell
-
-devenv is included for automatic dev shell integration.
+Environments are fully reproducible and version-pinned.
 
 ---
 
 # Design Philosophy
 
-## Everything is reproducible
+## Single pkgs universe per system
 
-System configuration, editor setup, shell environments, and development tooling are all managed declaratively.
+Avoids duplication and inconsistent package trees.
 
-## Modular over monolithic
+## Overlays instead of multiple nixpkgs instances
 
-Features are isolated into focused modules instead of one massive configuration file.
+Unstable packages are exposed as a namespace, not a separate world.
 
-## Stable core, selective instability
+## mkHost is the only system entry point
 
-Stable nixpkgs is used for the main system while unstable packages are selectively imported where newer software is useful.
+All machines are constructed consistently.
+
+## Modular first
+
+Everything is split into:
+
+* host modules
+* shared modules
+* overlays
+* system builder
 
 ---
 
-# Notes
+# Usage
 
-* Some configuration is hardware-specific
-* This setup evolves frequently and doubles as a learning/project environment
-* Many components are experimental by design
+## Build system
+
+```bash
+nh os switch
+```
+
+## Update inputs
+
+```bash
+nh os switch --update
+```
+
+## Enter dev environment
+
+```bash
+nix develop ./devFlakes/<name>
+```
 
 ---
 
 # Future Ideas
 
-* Hjem integration
-* Shared module library
-* Public reusable dev flakes
-* Host profiles for additional machines
-* Setting up a host for a pi on and ARM cpu
-
+* Expand ARM support (Pi cluster experiments)
+* Hjem integration for dotfile management
+* Multi-disk / multi-machine orchestration tooling
 
