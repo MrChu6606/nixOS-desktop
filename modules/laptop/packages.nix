@@ -1,7 +1,6 @@
 {
   pkgs,
-  unstablePkgs,
-  nvfPkg,
+  nvfFN,
   zenPkg,
   ...
 }: let
@@ -65,7 +64,7 @@
     moon-buggy
   ];
 
-  unstable = with unstablePkgs; [
+  unstable = with pkgs.unstable; [
     openjdk17
     python3
     lua
@@ -75,8 +74,11 @@
     yazi
     noctalia-shell
   ];
+
+  nvfPkg = nvfFN pkgs.unstable;
+
 in {
-  environment.systemPackages = stable ++ unstable ++ [nvfPkg zenPkg];
+  environment.systemPackages = stable ++ unstable ++ [ nvfPkg zenPkg ];
 
   services.flatpak = {
     enable = true;

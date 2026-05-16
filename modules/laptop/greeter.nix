@@ -1,6 +1,5 @@
-{ inputs, ... }:
+{ ... }:
 {
-    imports = [inputs.silentSDDM.nixosModules.default];
 
     services.displayManager.sddm = {
         enable = true;

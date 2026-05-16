@@ -15,4 +15,5 @@ dir:
         entries.${name} == "regular"
         && lib.hasSuffix ".nix" name
         && !(lib.hasSuffix ".nix~" name)
+        && name != "default.nix"
       ) (attrNames entries))
