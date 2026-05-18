@@ -68,8 +68,8 @@
         type = "gpt";
 
         partitions = {
+          name = "data";
           data = {
-            name = "data";
             size = "100%";
 
             content = {
