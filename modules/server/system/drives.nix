@@ -4,7 +4,7 @@
     # OS DISK (500GB)
     os = {
       type = "disk";
-      device = "/dev/disk/by-id/REPLACE_OS_DISK";
+      device = "/dev/disk/by-id/nvme-Samsung_SSD_950_PRO_512GB_S2GMNCAGB24013A";
 
       content = {
         type = "gpt";
@@ -36,7 +36,7 @@
     # APPDATA + VMS (1TB)
     appdata = {
       type = "disk";
-      device = "/dev/disk/by-id/REPLACE_APPDATA_DISK";
+      device = "/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_with_Heatsink_1TB_S6WSNS0RC14674J";
 
       content = {
         type = "gpt";
@@ -59,7 +59,7 @@
     # MEDIA (2TB)
     media = {
       type = "disk";
-      device = "/dev/disk/by-id/REPLACE_MEDIA_DISK";
+      device = "/dev/disk/by-id/ata-Inland_SATA_SSD_IB24IL0002S00060";
 
       content = {
         type = "gpt";
