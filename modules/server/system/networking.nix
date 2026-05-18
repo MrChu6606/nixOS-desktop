@@ -8,7 +8,7 @@
   };
 
   # Configure hostname
-  networking.hostName = "Sequoia";
+  networking.hostName = "sequoia";
 
   # Configure ssh
   services.openssh = {

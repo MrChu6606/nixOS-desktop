@@ -63,7 +63,8 @@
             (import ./overlays/unstable.nix { inherit nixpkgs-unstable; } )
         ];
         modules = [
-          ./modules/laptop
+          ./modules/pc/laptop
+          ./modules/pc/shared
           ./modules/shared
           nix-flatpak.nixosModules.nix-flatpak
           silentSDDM.nixosModules.default
