@@ -1,12 +1,4 @@
-{ ... }: {
-  # Enable flakes and nix shell
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # Configure boot loader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  time.timeZone = "America/New_York";
+_: {
 
   # Set automatic garbage collection
   # disabled for potential conflict with nh
@@ -20,9 +12,6 @@
   nix.optimise.automatic = true;
   nix.optimise.dates = [ "weekly" ];
 
-  # Set neovim as default editor
-  environment.variables.EDITOR = "nvim";
-
   # Enable docker
   virtualisation.docker = {
     enable = true;
@@ -30,6 +19,4 @@
       data-root = "/mnt/appdata/docker";
     };
   };
-
-  system.stateVersion = "25.11";
 }

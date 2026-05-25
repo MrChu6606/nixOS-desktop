@@ -85,7 +85,8 @@
         system = "x86_64-linux";
         modules = [
           ./modules/shared
-          ./modules/server
+          ./modules/server/tower
+          ./modules/server/shared
           nixflix.nixosModules.default
           sops-nix.nixosModules.default
           disko.nixosModules.default
@@ -100,7 +101,10 @@
         system = "aarch64-linux";
         modules = [
           ./modules/shared
-          ./modules/pi
+          ./modules/server/pi
+          ./modules/server/shared
+          disko.nixosModules.default
+
         ];
         extraSpecialArgs = { inherit nvfFN; };
       };

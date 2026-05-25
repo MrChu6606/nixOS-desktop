@@ -7,6 +7,7 @@
   stable = with pkgs; [
     wget
     git
+    sops
     rclone
     ripgrep
     tor-browser

@@ -11,7 +11,7 @@
     "prowlarr/api_key" = {};
     "prowlarr/password" = {};
     "indexer-api-keys/DrunkenSlug" = {};
-    "jellyfin/alice_password" = {};
+    "jellyfin/nic_password" = {};
     "seerr/api_key" = {};
     "wireguard/conf" = {};
   };
@@ -89,7 +89,7 @@
         admin = {
           mutable = false;
           policy.isAdministrator = true;
-          password._secret = config.sops.secrets."jellyfin/alice_password".path;
+          password._secret = config.sops.secrets."jellyfin/nic_password".path;
         };
       };
     };

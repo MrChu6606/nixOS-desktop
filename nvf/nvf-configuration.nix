@@ -201,6 +201,6 @@
 
     lazy.enable = false;
 
-    extraLuaFiles = [ ../nvf/filetypes.lua ];
+    extraLuaFiles = [ ./filetypes.lua ];
   };
 }
