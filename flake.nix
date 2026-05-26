@@ -47,7 +47,6 @@
     nixflix,
     sops-nix,
     disko,
-    nixos-hardware,
     ...
   }: let
 
@@ -98,7 +97,6 @@
         overlays = [
           (import ./overlays/unstable.nix { inherit nixpkgs-unstable; } )
         ];
-        extraSpecialArgs = { inherit nvfFN; };
       };
 
       juniper = mkHost {
@@ -111,7 +109,6 @@
           #nixos-hardware.nixosModules.raspberry-pi-4
 
         ];
-        extraSpecialArgs = { inherit nvfFN; };
       };
     };
   };

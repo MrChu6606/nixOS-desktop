@@ -1,9 +1,8 @@
 _: {
 
   # Set automatic garbage collection
-  # disabled for potential conflict with nh
   nix.gc = {
-    automatic = false;
+    automatic = true;
     dates = "weekly";
     options = "--delete-generations +5";
   };
