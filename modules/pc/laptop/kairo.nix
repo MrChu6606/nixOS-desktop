@@ -16,12 +16,12 @@ let
       owner = "programmersd21";
       repo = "kairo";
       rev = "main";
-      hash = "sha256-1ojhSonWu6AdX+Tj8wO6vGFOzjld3Vp5cW8RS0iwbWc=";
+      hash = "sha256-KSSE2ASii5sF01K5Mx5iB/xHbKbEBEnLSNISsfPgEFk=";
     };
 
     # Force Nix to ignore repos vendor folder
     proxyVendor = true;
-    vendorHash = "sha256-yEgPXAWkSgLCPhvAfZ7PkT9G7rJzeIXJIWVfdQ+Di5g=";
+    vendorHash = "sha256-KKvov6jGRfKkvPUk/CZ49XaGQ1ariN6NPiR3kKxOCxM=";
   };
 in
 {
