@@ -7,58 +7,55 @@
   stable = with pkgs; [
     wget
     git
-    sops
-    rclone
+    sops # for secrets
+    rclone # for copy pasting large files across drives
     ripgrep
     tor-browser
     qutebrowser
-    mpv
-    yt-dlp
-    streamlink
+    mpv # terminal video player
+    yt-dlp # yt vid downloader
+    streamlink # way to watch twitch ad free sorta
     usbutils
     fastfetch
-    alacritty
-    cmatrix
-    cbonsai
+    alacritty # terminal emulator
+    cmatrix # flash ware
+    cbonsai # flash ware
     gnumake
     curl
-    pastel
+    pastel # for picking colors
     imv
     numix-cursor-theme
-    exiftool
-    dunst
-    evtest
-    tealdeer
-    tree
-    wireshark
-    btop
-    zathura
+    exiftool # idk what this is
+    evtest # or this
+    tealdeer # man page helper
+    tailspin # log highlighter
+    tree # filesystem viewer thing
+    wireshark # network traffic monitor
+    btop # system monitor
+    zathura # pdf viewer
     dig
-    prismlauncher
+    prismlauncher # minecraft
     unzip
     zip
     vscode
     neovim
     wl-clipboard
-    pavucontrol
-    brightnessctl
-    kanshi
-    vesktop
+    pavucontrol # audio
+    brightnessctl # brightness
+    kanshi # todo list
+    vesktop # discord
     ffmpeg
     xdg-utils
-    localsend
-    #pdf stuff
-    file
-    clamav
+    localsend # file transfer thing
+    file # this isnt included by default?
+    clamav # idk what this is
     poppler-utils
-    kdePackages.okular
-    zathura
-    #school
-    zoom-us
-    flameshot
-    grim
-    imagemagick
-    qalculate-qt
+    kdePackages.okular # pdf editor
+    zathura # terminal pdf viewer
+    flameshot # screen shot tool (i hate it)
+    grim # ss tool dependency
+    imagemagick # actual magic
+    qalculate-qt # calculator
     fd
     # games
     vitetris
