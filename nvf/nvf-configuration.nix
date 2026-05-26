@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   ...
 }: {
   vim = {
@@ -156,7 +155,7 @@
       multicursors.enable = false;
       smart-splits.enable = true;
       undotree.enable = true; # use with :undotree
-      motion.precognition.enable = true; # shows hints for navigation
+      motion.precognition.enable = false; # shows hints for navigation
 
       images = {
         image-nvim.enable = false;
