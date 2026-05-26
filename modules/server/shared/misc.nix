@@ -19,4 +19,6 @@ _: {
       data-root = "/mnt/appdata/docker";
     };
   };
+
+  security.sudo.wheelNeedsPassword = false;
 }

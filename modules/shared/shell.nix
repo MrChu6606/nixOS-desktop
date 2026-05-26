@@ -32,7 +32,6 @@
     enable = true;
     clean.enable = true;
 
-    # This doesnt seem to work right now
     flake = "/home/nic/nix-fleet/";
   };
 }

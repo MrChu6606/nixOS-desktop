@@ -32,6 +32,9 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
   };
 
   outputs = {
@@ -44,6 +47,7 @@
     nixflix,
     sops-nix,
     disko,
+    nixos-hardware,
     ...
   }: let
 
@@ -104,6 +108,7 @@
           ./modules/server/pi
           ./modules/server/shared
           disko.nixosModules.default
+          #nixos-hardware.nixosModules.raspberry-pi-4
 
         ];
         extraSpecialArgs = { inherit nvfFN; };
