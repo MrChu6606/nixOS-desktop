@@ -60,6 +60,7 @@
     # games
     vitetris
     moon-buggy
+    nmap
   ];
 
   unstable = with pkgs.unstable; [

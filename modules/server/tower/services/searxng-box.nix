@@ -1,48 +1,68 @@
 _: {
   containers.searxng = {
     autoStart = true;
+
     privateNetwork = true;
+    hostBridge = "br0";
+    localAddress = "192.168.4.28/22";
 
-    # Define internal subnet for host-container communication
-    hostAddress = "10.200.0.1";
-    localAddress = "10.200.0.2";
-
-    # The actual NixOS system configuration running INSIDE the container
-    config = _: {
-      # Match this to your host's NixOS state version
+    # Everything inside 'config' runs inside the container
+    config = { lib, ... }: {
       system.stateVersion = "25.05"; 
 
-      # 1. Spin up an internal Redis server for rate-limiting & caching
-      services.redis.servers.searxng = {
+      services.searx = {
         enable = true;
-        port = 6379;
-        bind = "127.0.0.1"; # Lock it down to the container's internal localhost
-      };
+        domain = "192.168.4.28";
 
-      # 2. Configure SearXNG
-      services.searxng = {
-        enable = true;
+        redisCreateLocally = true;
+        
         settings = {
           server = {
             port = 8080;
-            bind_address = "0.0.0.0"; # Listen on all interfaces inside the container
+            bind_address = "0.0.0.0"; # Listen within the container network boundary
             secret_key = "acfe583c3e14089548c186467efb7ebbdef765b643ede173790fc6bc9252b3cf";
-          };
-          redis = {
-            url = "redis://127.0.0.1:6379/0";
           };
           search = {
             safe_search = 0;
-            autocomplete = "google";
+            autocomplete = "duckduckgo";
           };
           ui = {
             theme = "simple";
+            hotkeys = "vim";
           };
+
+          outgoing = {
+            reques_timeout = 4.0;
+            max_request_timeout = 10.0;
+            useragent_reg = true;
+          };
+
+          engines = [
+            { name = "duckduckgo"; engine = "duckduckgo"; shortcut = "ddg"; }
+            { name = "brave"; engine = "brave"; shortcut = "b"; }
+            { name = "wikipedia"; engine = "wikipedia"; shortcut = "w"; }
+
+            { name = "qwant"; engine = "qwant"; shortcut = "qw"; }
+          ];
+
         };
       };
 
       # Open the container's internal firewall so the host can query it
-      networking.firewall.allowedTCPPorts = [ 8080 ];
+      networking = {
+        firewall.allowedTCPPorts = [ 8080 ];
+
+        # Use systemd-resolved inside the container
+        # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
+        useHostResolvConf = lib.mkForce false;
+
+        # Tell the container how to reach the internet
+        defaultGateway = "192.168.4.1";
+        
+        nameservers = [ "192.168.4.1" "1.1.1.1" "8.8.8.8" ];
+      };
+
+      services.resolved.enable = true;
     };
   };
 }

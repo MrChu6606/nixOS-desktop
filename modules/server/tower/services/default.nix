@@ -2,5 +2,6 @@
 
 {
   imports = [
+    ./searxng-box.nix
   ];
 }
